@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Motion View | Biggest Smart Gadget, AI & Eco Product Collection</title>
+  <meta name="description"
+    content="Shop 100% authentic smart gadgets, smartwatches, true wireless earbuds, fast chargers, AI hardware, and modern accessories with official warranty.">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            motionPurple: '#7c3aed',
+            motionPurpleHover: '#6d28d9',
+            motionOrange: '#f97316',
+            motionCyan: '#0284c7'
+          },
+          fontFamily: {
+            heading: ['Outfit', 'sans-serif'],
+            sans: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Clean White Motion View Theme CSS -->
+  <link rel="stylesheet" href="/css/style.css?v=4.2">
+</head>
+
+<body class="bg-[#f8fafc] text-slate-800 antialiased selection:bg-purple-600 selection:text-white">
+
+  <!-- =========================================================================
+       2. MAIN HEADER (Responsive Logo, Desktop Nav, Search Bar, Cart)
+       ========================================================================= -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-xs transition-all">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 py-2 sm:py-3.5">
+      <div class="flex items-center justify-between gap-3">
+
+        <!-- Brand Logo -->
+        <a href="#" class="flex items-center gap-2 flex-shrink-0 group">
+          <div class="flex items-center gap-1.5 p-1 sm:p-1.5 rounded-lg bg-slate-50 border border-slate-200">
+            <div class="w-6 h-5 sm:w-7 sm:h-6 rounded bg-purple-600 flex items-center justify-center text-white">
+              <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5">
+                <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                <polyline points="2 17 12 22 22 17" />
+                <polyline points="2 12 12 17 22 12" />
+              </svg>
+            </div>
+            <span class="font-heading font-black text-lg sm:text-xl tracking-tight text-slate-900">MOTION<span
+                class="text-purple-600">VIEW</span></span>
+          </div>
+        </a>
+
+        <!-- Center Nav Items (Desktop) -->
+        <nav class="hidden lg:flex items-center gap-4 text-xs font-bold text-slate-700">
+          <button
+            class="nav-filter-link flex items-center gap-1.5 hover:text-purple-600 transition-colors cursor-pointer"
+            data-tab="all">
+            <svg class="w-4 h-4 text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="3" width="7" height="7" />
+              <rect x="14" y="3" width="7" height="7" />
+              <rect x="14" y="14" width="7" height="7" />
+              <rect x="3" y="14" width="7" height="7" />
+            </svg>
+            <span>Campaign</span>
+          </button>
+          <button class="nav-filter-link hover:text-purple-600 transition-colors cursor-pointer"
+            data-tab="ai-shop"><span>AI Shop</span></button>
+          <button class="nav-filter-link hover:text-purple-600 transition-colors cursor-pointer"
+            data-tab="gadgets"><span>Gadgets</span></button>
+          <button class="nav-filter-link hover:text-purple-600 transition-colors cursor-pointer"
+            data-tab="market"><span>Market</span></button>
+
+          <!-- Order Track Box Button -->
+          <button id="btn-order-track-box" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-purple-50 text-slate-700 hover:text-purple-700 border border-slate-200 transition-all cursor-pointer font-bold text-xs shadow-2xs">
+            <svg class="w-3.5 h-3.5 text-purple-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 10V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l2-1.14"/><polyline points="3.29 7 12 12 20.71 7"/><line x1="12" y1="22" x2="12" y2="12"/><circle cx="18" cy="18" r="3"/><polyline points="18 17 18 19 20 19"/></svg>
+            <span>Order Track</span>
+          </button>
+        </nav>
+
+        <!-- Search Bar (Desktop) -->
+        <div class="hidden sm:block flex-1 max-w-md mx-2 relative" id="desktop-search-wrapper">
+          <div class="relative w-full">
+            <input type="text" id="search-input" placeholder="Search products..." autocomplete="off"
+              class="w-full py-2 pl-4 pr-10 rounded-full bg-slate-50 border border-slate-300 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-purple-600 focus:bg-white transition-all shadow-xs" />
+            <button id="search-clear-btn"
+              class="absolute inset-y-0 right-10 flex items-center text-slate-400 hover:text-slate-600 hidden text-xs font-bold">&times;</button>
+            <div class="absolute inset-y-0 right-3.5 flex items-center pointer-events-none text-slate-400">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Instant Live Autocomplete Dropdown (Desktop) -->
+          <div id="desktop-search-dropdown" class="absolute left-0 right-0 top-full mt-2 bg-white border border-slate-200 rounded-2xl shadow-2xl overflow-hidden z-50 hidden max-h-96 overflow-y-auto">
+            <!-- Injected via JavaScript -->
+          </div>
+        </div>
+
+        <!-- Action Icons (Track, Wishlist & Cart) -->
+        <div class="flex items-center gap-1.5 sm:gap-3 flex-shrink-0">
+          
+          <!-- Mobile & Tablet Order Track Button (Exact match with user box) -->
+          <button class="btn-trigger-track flex lg:hidden items-center gap-1 px-2.5 py-1.5 rounded-lg bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 text-xs font-bold transition-all shadow-2xs cursor-pointer" title="Track Order">
+            <svg class="w-3.5 h-3.5 text-purple-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 10V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l2-1.14"/><polyline points="3.29 7 12 12 20.71 7"/><line x1="12" y1="22" x2="12" y2="12"/><circle cx="18" cy="18" r="3"/><polyline points="18 17 18 19 20 19"/></svg>
+            <span class="text-[11px]">Track</span>
+          </button>
+
+          <button
+            class="btn-open-wishlist relative p-2 rounded-full hover:bg-slate-100 text-slate-700 transition-colors"
+            title="Wishlist">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+            </svg>
+            <span
+              class="wishlist-badge-count absolute -top-1 -right-1 w-4 h-4 rounded-full bg-purple-600 text-white font-bold text-[9px] flex items-center justify-center hidden">0</span>
+          </button>
+
+          <button class="btn-open-cart relative p-2 rounded-full hover:bg-slate-100 text-slate-800 transition-colors"
+            title="Cart">
+            <div class="relative">
+              <svg class="w-6 h-6 text-slate-800" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="1.8">
+                <circle cx="8" cy="21" r="1" />
+                <circle cx="19" cy="21" r="1" />
+                <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
+              </svg>
+              <span
+                class="cart-badge-count absolute -top-1.5 -right-2 w-4 h-4 rounded-full bg-purple-600 text-white font-bold text-[9px] flex items-center justify-center">0</span>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Search Bar (Only on mobile screens) -->
+      <div class="sm:hidden mt-2 pt-0.5 relative" id="mobile-search-wrapper">
+        <div class="relative w-full">
+          <input type="text" id="mobile-search-input" placeholder="Search products..." autocomplete="off"
+            class="w-full py-1.5 pl-3.5 pr-10 rounded-full bg-slate-50 border border-slate-300 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:border-purple-600 focus:bg-white shadow-xs" />
+          <button id="mobile-search-clear-btn"
+            class="absolute inset-y-0 right-10 flex items-center text-slate-400 hover:text-slate-600 hidden text-xs font-bold">&times;</button>
+          <div class="absolute inset-y-0 right-3.5 flex items-center pointer-events-none text-slate-400">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Instant Live Autocomplete Dropdown (Mobile) -->
+        <div id="mobile-search-dropdown" class="absolute left-0 right-0 top-full mt-2 bg-white border border-slate-200 rounded-2xl shadow-2xl overflow-hidden z-50 hidden max-h-80 overflow-y-auto">
+          <!-- Injected via JavaScript -->
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+  <!-- =========================================================================
+       STOREFRONT HOME VIEW (HERO, CATEGORIES, TABS, PRODUCT CATALOG)
+       ========================================================================= -->
+  <div id="store-home-view">
+    <!-- Left Skyscraper Banner (Desktop PC Only) -->
+    <aside class="desktop-side-banner left-banner" aria-label="Special Offers">
+      <a href="/category/gadgets" class="block">
+        <img src="/side-banner-left.png?v=1.0" alt="Motion View Best Deal 40% Discount" loading="lazy">
+      </a>
+    </aside>
+
+    <!-- Right Skyscraper Banner (Desktop PC Only) -->
+    <aside class="desktop-side-banner right-banner" aria-label="Trending Gadgets">
+      <a href="/category/gadgets" class="block">
+        <img src="/side-banner-right.png?v=1.0" alt="Upgrade Your Everyday Life - Motion View" loading="lazy">
+      </a>
+    </aside>
+
+    <!-- 4. OFFICIAL CUSTOM HERO BANNER (1200 x 300 px) -->
+    <section class="max-w-7xl mx-auto px-3 sm:px-6 py-2 sm:py-2.5">
+      <div class="rounded-xl sm:rounded-2xl overflow-hidden shadow-xs border border-slate-200 bg-white">
+        <img id="store-hero-banner-img" src="/hero-banner.png?v=2.0" alt="Motion View Official Top Banner"
+          class="w-full h-auto object-cover block" style="aspect-ratio: 1200 / 300; min-height: 85px;" />
+      </div>
+    </section>
+
+    <!-- 5. CLEAN RETAIL CATEGORY THUMBNAIL CARDS (Real Product Images - Daraz / StarTech Style) -->
+    <section class="max-w-7xl mx-auto px-3 sm:px-6 py-3 sm:py-5">
+      <div class="flex sm:grid sm:grid-cols-8 gap-3 sm:gap-4 overflow-x-auto no-scrollbar py-2">
+
+        <!-- 1. Smartwatches (User Asset: d5d79b9e92c40d6e8eb49c750278e787.webp) -->
+        <div class="category-clean-card flex-shrink-0 w-[72px] sm:w-auto" data-tab="gadgets">
+          <div class="category-thumb-box">
+            <img src="/gadgate/d5d79b9e92c40d6e8eb49c750278e787.webp" alt="Smartwatches" loading="lazy" />
+          </div>
+          <span class="category-clean-title">Smartwatch</span>
+        </div>
+
+        <!-- 2. Powerbanks (User Asset: 2c3f657842d1d8057ffd8e1670eda240.webp) -->
+        <div class="category-clean-card flex-shrink-0 w-[72px] sm:w-auto" data-tab="gadgets">
+          <div class="category-thumb-box">
+            <img src="/gadgate/2c3f657842d1d8057ffd8e1670eda240.webp" alt="Powerbanks" loading="lazy" />
+          </div>
+          <span class="category-clean-title">Powerbank</span>
+        </div>
+
+        <!-- 3. Mini UPS / Router Backup (User Asset: ccaa579ea20086caf2cdec1973acca59.webp) -->
+        <div class="category-clean-card flex-shrink-0 w-[72px] sm:w-auto" data-tab="gadgets">
+          <div class="category-thumb-box">
+            <img src="/gadgate/ccaa579ea20086caf2cdec1973acca59.webp" alt="Mini UPS" loading="lazy" />
+          </div>
+          <span class="category-clean-title">Mini UPS</span>
+        </div>
+
+        <!-- 4. Room Heater & Fan (User Asset: 6eedeb1a725ed321c010ab709f5c0de5.webp) -->
+        <div class="category-clean-card flex-shrink-0 w-[72px] sm:w-auto" data-tab="market">
+          <div class="category-thumb-box">
+            <img src="/gadgate/6eedeb1a725ed321c010ab709f5c0de5.webp" alt="Room Heater" loading="lazy" />
+          </div>
+          <span class="category-clean-title">Room Heater</span>
+        </div>
+
+        <!-- 5. Fast Chargers -->
+        <div class="category-clean-card flex-shrink-0 w-[72px] sm:w-auto" data-tab="gadgets">
+          <div class="category-thumb-box">
+            <img src="/gadgate/177315710478.webp" alt="Fast Chargers" loading="lazy" />
+          </div>
+          <span class="category-clean-title">Fast Charger</span>
+        </div>
+
+        <!-- 6. Bluetooth Speakers -->
+        <div class="category-clean-card flex-shrink-0 w-[72px] sm:w-auto" data-tab="gadgets">
+          <div class="category-thumb-box">
+            <img src="/gadgate/17886040005.webp" alt="Speakers" loading="lazy" />
+          </div>
+          <span class="category-clean-title">Speakers</span>
+        </div>
+
+        <!-- 7. Hubs & Cables -->
+        <div class="category-clean-card flex-shrink-0 w-[72px] sm:w-auto" data-tab="gadgets">
+          <div class="category-thumb-box">
+            <img src="/gadgate/17194681585.webp" alt="Hubs & Cables" loading="lazy" />
+          </div>
+          <span class="category-clean-title">Hubs & Cables</span>
+        </div>
+
+        <!-- 8. AI Tools & Apps -->
+        <div class="category-clean-card flex-shrink-0 w-[72px] sm:w-auto" data-tab="ai-shop">
+          <div class="category-thumb-box">
+            <img src="/aishop/1022ae29842a223040b19796bb5af7b3.jpg" alt="AI Tools" loading="lazy" />
+          </div>
+          <span class="category-clean-title">AI Tools</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 6. 3-SECTION FILTER PILLS BAR (Touch Scrollable on Mobile) -->
+    <section class="max-w-7xl mx-auto px-3 sm:px-6 py-2">
+      <div class="flex items-center justify-between flex-wrap gap-2.5 pb-2.5 border-b border-slate-200">
+
+        <!-- Tab Pills -->
+        <div class="flex items-center gap-1.5 sm:gap-2 overflow-x-auto no-scrollbar py-0.5 max-w-full flex-nowrap">
+          <button class="tab-pill active" data-tab="all">
+            <span>All</span>
+            <span class="tab-pill-badge">25</span>
+          </button>
+
+          <button class="tab-pill" data-tab="ai-shop">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M12 2a8 8 0 0 0-8 8c0 3.37 2.08 6.25 5 7.42V20a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2.58c2.92-1.17 5-4.05 5-7.42a8 8 0 0 0-8-8z" />
+            </svg>
+            <span>AI Shop</span>
+            <span class="tab-pill-badge">7</span>
+          </button>
+
+          <button class="tab-pill" data-tab="gadgets">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+            </svg>
+            <span>Gadgets</span>
+            <span class="tab-pill-badge">12</span>
+          </button>
+
+          <button class="tab-pill" data-tab="market">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
+            </svg>
+            <span>Market</span>
+            <span class="tab-pill-badge">6</span>
+          </button>
+        </div>
+
+        <!-- Sorting Select -->
+        <div class="flex items-center gap-1.5 text-xs font-semibold text-slate-600 ml-auto">
+          <label for="sort-select" class="hidden sm:inline">Sort:</label>
+          <select id="sort-select"
+            class="py-1.5 px-2 sm:px-3 rounded-lg bg-white border border-slate-300 text-xs font-semibold text-slate-800 focus:outline-none focus:border-slate-800">
+            <option value="featured">Featured</option>
+            <option value="price-low">Price: Low</option>
+            <option value="price-high">Price: High</option>
+            <option value="rating">Top Rated</option>
+            <option value="discount">Discount %</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. NEW ARRIVAL HEADER BAR & PRODUCT GRID -->
+    <main id="store-showcase-section" class="max-w-7xl mx-auto px-3 sm:px-6 py-3 sm:py-5">
+
+      <!-- Section Box Title -->
+      <div
+        class="bg-white border border-slate-200 rounded-xl px-3.5 sm:px-5 py-2.5 sm:py-3.5 mb-3 sm:mb-6 shadow-xs flex items-center justify-between">
+        <h2 id="section-header-title" class="font-heading font-black text-sm sm:text-lg text-slate-900">
+          New Arrival
+        </h2>
+        <span id="product-count-display" class="text-[11px] sm:text-xs font-semibold text-slate-500">Showing 25
+          products</span>
+      </div>
+
+      <!-- Responsive Product Cards Grid (2 cols mobile, 3 cols tablet, 6 cols desktop) -->
+      <div id="product-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-4">
+        <!-- Injected via JavaScript -->
+      </div>
+    </main>
+  </div>
+
+
+  <!-- =========================================================================
+       DEDICATED PRODUCT DETAILS PAGE (PATH ROUTING VIEW)
+       ========================================================================= -->
+  <main id="product-detail-view" class="hidden max-w-7xl mx-auto px-3 sm:px-6 py-3 sm:py-6">
+    <!-- Injected dynamically via JavaScript renderProductDetailPage(product) -->
+  </main>
+
+  <!-- =========================================================================
+       DEDICATED ORDER TRACKING PAGE VIEW (/track-order.bd)
+       ========================================================================= -->
+  <main id="order-track-page-view" class="hidden min-h-[75vh] flex-col items-center justify-center px-4 py-8 sm:py-16">
+    <div class="w-full max-w-xl mx-auto">
+      
+      <!-- Top Truck Delivery Icon (Screenshot Match) -->
+      <div class="flex justify-center mb-4">
+        <div class="w-14 h-14 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-lg shadow-blue-600/30">
+          <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="1" y="3" width="15" height="13"/>
+            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+            <circle cx="5.5" cy="18.5" r="2.5"/>
+            <circle cx="18.5" cy="18.5" r="2.5"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Heading & Subtitle -->
+      <div class="text-center mb-8">
+        <h1 class="font-heading font-black text-2xl sm:text-3xl text-slate-900 tracking-tight mb-2">Track Your Order</h1>
+        <p class="text-xs sm:text-sm text-slate-500 font-medium">Enter your order details to check delivery status</p>
+      </div>
+
+      <!-- Main Tracking Card (White Luxury Clean Card) -->
+      <div class="bg-white rounded-3xl border border-slate-200 shadow-xl shadow-slate-100/80 p-6 sm:p-8 mb-6">
+        <form id="page-order-track-form" class="space-y-4">
+          
+          <!-- Order Number Input -->
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1.5 flex items-center gap-1.5">
+              <span class="text-slate-400">#</span>
+              <span>Order Number</span>
+            </label>
+            <div class="relative">
+              <input type="text" id="page-track-order-id" placeholder="Enter order number (e.g. REQ-11804)"
+                class="w-full py-3 pl-4 pr-10 rounded-xl bg-slate-50/70 border border-slate-300 text-sm text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-600/10 transition-all font-mono" />
+              <div class="absolute inset-y-0 right-3.5 flex items-center pointer-events-none text-slate-400">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Phone Number Input -->
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1.5 flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span>Phone Number</span>
+            </label>
+            <input type="tel" id="page-track-phone" placeholder="Enter phone number (e.g. 017XXXXXXXX)"
+              class="w-full py-3 px-4 rounded-xl bg-slate-50/70 border border-slate-300 text-sm text-slate-900 placeholder-slate-400 focus:bg-white focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-600/10 transition-all font-mono" />
+          </div>
+
+          <!-- Track Order Submit Button (Solid Blue Screenshot Match) -->
+          <button type="submit"
+            class="w-full py-3.5 px-6 rounded-xl bg-blue-600 hover:bg-blue-700 active:scale-[0.99] text-white font-bold text-sm flex items-center justify-center gap-2 shadow-lg shadow-blue-600/30 transition-all cursor-pointer mt-2">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <span>Track Order</span>
+          </button>
+        </form>
+
+        <!-- Live Track Results Output -->
+        <div id="page-track-output" class="mt-6 pt-6 border-t border-slate-100 hidden">
+          <!-- Injected via JavaScript -->
+        </div>
+      </div>
+
+      <!-- Need Help Bottom Card (Screenshot Match) -->
+      <div class="bg-white rounded-2xl border border-slate-200/90 shadow-sm p-4 sm:p-5 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center flex-shrink-0 shadow-xs">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 18.72a9 9 0 1 0-12 0"/><path d="M12 12v6"/><circle cx="12" cy="7" r="1"/></svg>
+          </div>
+          <div>
+            <h4 class="font-bold text-xs sm:text-sm text-slate-900">Need Help?</h4>
+            <p class="text-[11px] text-slate-500">Our customer service team is here to assist you</p>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-3 sm:gap-4 text-xs font-semibold text-slate-600">
+          <a href="tel:09678300400" class="flex items-center gap-1.5 text-blue-600 hover:underline">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>09678-300400</span>
+          </a>
+          <a href="mailto:info@bdshop.com" class="flex items-center gap-1.5 hover:text-blue-600">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <span>info@bdshop.com</span>
+          </a>
+          <div class="flex items-center gap-1.5 text-slate-500">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>10am-11pm Daily</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+
+  <!-- =========================================================================
+       8. SLIDING SHOPPING CART DRAWER (Clean White Theme)
+       ========================================================================= -->
+  <div id="cart-drawer-backdrop"
+    class="drawer-backdrop fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex justify-end">
+    <div
+      class="drawer-panel w-full max-w-md bg-white border-l border-slate-200 h-full flex flex-col justify-between shadow-2xl p-6 overflow-y-auto">
+
+      <div>
+        <div class="flex items-center justify-between pb-4 border-b border-slate-200 mb-4">
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-purple-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="8" cy="21" r="1" />
+              <circle cx="19" cy="21" r="1" />
+              <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
+            </svg>
+            <h3 class="font-heading font-black text-xl text-slate-900">Shopping Cart</h3>
+          </div>
+          <button
+            class="btn-close-cart p-2 rounded-lg text-slate-400 hover:text-slate-800 text-xl font-bold leading-none">&times;</button>
+        </div>
+
+        <div id="cart-empty-state" class="text-center py-12">
+          <div
+            class="w-16 h-16 mx-auto mb-3 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-400">
+            <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="8" cy="21" r="1" />
+              <circle cx="19" cy="21" r="1" />
+              <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
+            </svg>
+          </div>
+          <h4 class="font-bold text-slate-800 text-base mb-1">Your cart is empty</h4>
+          <p class="text-xs text-slate-500 mb-4">Add products from AI Shop, Gadgets, or Market.</p>
+        </div>
+
+        <div id="cart-items-container" class="space-y-3 max-h-[380px] overflow-y-auto pr-1">
+          <!-- Injected via JavaScript -->
+        </div>
+      </div>
+
+      <!-- Drawer Footer / Summary -->
+      <div class="pt-4 border-t border-slate-200 space-y-3 mt-4">
+        <div class="flex gap-2">
+          <input type="text" id="coupon-input" placeholder="Coupon (Try NEXUS20)"
+            class="flex-1 py-2 px-3 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-800 uppercase focus:outline-none focus:border-purple-600">
+          <button id="btn-apply-coupon"
+            class="px-4 py-2 rounded-lg bg-purple-600 hover:bg-purple-700 text-white text-xs font-bold transition-colors">Apply</button>
+        </div>
+        <div id="coupon-message" class="text-xs font-semibold"></div>
+
+        <div class="space-y-1.5 text-xs text-slate-600">
+          <div class="flex justify-between">
+            <span>Subtotal</span>
+            <span id="cart-subtotal" class="font-bold text-slate-800">৳0</span>
+          </div>
+          <div class="flex justify-between text-emerald-600">
+            <span>Coupon Discount</span>
+            <span id="cart-discount" class="font-bold">-৳0</span>
+          </div>
+          <div class="flex justify-between">
+            <span>Delivery Charge</span>
+            <span id="cart-shipping" class="font-bold text-slate-800">৳0</span>
+          </div>
+          <div class="flex justify-between text-base font-black text-slate-900 pt-2 border-t border-slate-200">
+            <span>Total Payable</span>
+            <span id="cart-grand-total" class="text-purple-600">৳0</span>
+          </div>
+        </div>
+
+        <button
+          class="btn-proceed-checkout w-full py-3 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-sm font-bold flex items-center justify-center gap-2 shadow-md transition-all">
+          <span>Proceed to Checkout</span>
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="9 18 15 12 9 6" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- =========================================================================
+       9. WISHLIST DRAWER (Clean White Theme)
+       ========================================================================= -->
+  <div id="wishlist-drawer-backdrop"
+    class="drawer-backdrop fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex justify-end">
+    <div
+      class="drawer-panel w-full max-w-md bg-white border-l border-slate-200 h-full flex flex-col justify-between shadow-2xl p-6 overflow-y-auto">
+      <div>
+        <div class="flex items-center justify-between pb-4 border-b border-slate-200 mb-4">
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5 text-rose-500" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+            </svg>
+            <h3 class="font-heading font-black text-xl text-slate-900">Saved Wishlist</h3>
+          </div>
+          <button
+            class="btn-close-wishlist p-2 rounded-lg text-slate-400 hover:text-slate-800 text-xl font-bold leading-none">&times;</button>
+        </div>
+
+        <div id="wishlist-empty-state" class="text-center py-16">
+          <div
+            class="w-16 h-16 mx-auto mb-3 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-400">
+            <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+            </svg>
+          </div>
+          <h4 class="font-bold text-slate-800 text-base mb-1">No Saved Items</h4>
+          <p class="text-xs text-slate-500">Tap the heart on any gadget to save for later.</p>
+        </div>
+
+        <div id="wishlist-items-container" class="space-y-3 max-h-[500px] overflow-y-auto pr-1"></div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- =========================================================================
+       10. QUICK VIEW SPECIFICATION MODAL (Clean White Theme)
+       ========================================================================= -->
+  <div id="quick-view-modal"
+    class="modal-wrapper fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
+    <div
+      class="modal-content-box w-full max-w-3xl bg-white border border-slate-200 rounded-2xl shadow-2xl overflow-hidden relative">
+      <button
+        class="btn-close-quickview absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center text-lg font-bold">
+        &times;
+      </button>
+
+      <div id="quick-view-body"></div>
+    </div>
+  </div>
+
+
+  <!-- =========================================================================
+       11. CHECKOUT MODAL (Clean White Theme)
+       ========================================================================= -->
+  <div id="checkout-modal"
+    class="modal-wrapper fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4">
+    <div
+      class="modal-content-box w-full max-w-2xl bg-white border border-slate-200 rounded-2xl shadow-2xl overflow-hidden p-6 sm:p-8">
+
+      <form id="checkout-form" action="javascript:void(0);" onsubmit="return false;">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-200 mb-6">
+          <div class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-lg bg-purple-100 text-purple-600 flex items-center justify-center">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
+                <line x1="1" y1="10" x2="23" y2="10" />
+              </svg>
+            </div>
+            <h3 class="font-heading font-black text-xl text-slate-900">Complete Fast Order</h3>
+          </div>
+          <button type="button"
+            class="btn-close-checkout text-slate-400 hover:text-slate-800 text-xl font-bold">&times;</button>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+          <div class="sm:col-span-2">
+            <label class="block text-xs font-semibold text-slate-600 mb-1">Your Name</label>
+            <input type="text" name="fullname" required value="Tanvir Ahmed"
+              class="w-full py-2.5 px-3.5 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-purple-600">
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1">Contact Phone</label>
+            <input type="text" name="phone" required value="01711223344"
+              class="w-full py-2.5 px-3.5 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-purple-600">
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-600 mb-1">Delivery Address</label>
+            <input type="text" name="address" required value="House 24, Road 7, Dhanmondi, Dhaka"
+              class="w-full py-2.5 px-3.5 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-900 focus:outline-none focus:border-purple-600">
+          </div>
+        </div>
+
+        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 mb-6">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Order Summary</h4>
+          <div id="checkout-summary-list" class="max-h-32 overflow-y-auto space-y-1"></div>
+        </div>
+
+        <div class="flex items-center justify-between pt-4 border-t border-slate-200">
+          <div>
+            <span class="text-xs text-slate-500 block">Total Payable:</span>
+            <span id="checkout-total-val" class="font-heading font-black text-2xl text-purple-600">৳0</span>
+          </div>
+
+          <button type="submit"
+            class="px-8 py-3 rounded-xl bg-purple-600 hover:bg-purple-700 text-white text-sm font-bold shadow-md transition-all">
+            Confirm Cash on Delivery / Pay
+          </button>
+        </div>
+      </form>
+
+      <!-- Success View -->
+      <div id="order-success-view" class="hidden text-center py-6">
+        <div
+          class="w-16 h-16 mx-auto mb-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center">
+          <svg class="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <polyline points="20 6 9 17 4 12" />
+          </svg>
+        </div>
+
+        <h3 class="font-heading font-black text-2xl text-slate-900 mb-2">Order Placed Successfully!</h3>
+        <p class="text-slate-600 text-xs max-w-md mx-auto mb-6">
+          Thank you for choosing Motion View. Our representative will call you for verification.
+        </p>
+
+        <div
+          class="p-4 rounded-xl bg-slate-50 border border-slate-200 max-w-md mx-auto mb-6 text-left text-xs space-y-2">
+          <div class="flex justify-between">
+            <span class="text-slate-500">Order Invoice ID:</span>
+            <span id="confirm-order-id" class="font-mono font-bold text-purple-600">MV-892140</span>
+          </div>
+          <div class="flex justify-between">
+            <span class="text-slate-500">Total Amount:</span>
+            <span id="confirm-order-total" class="font-bold text-slate-900">৳0</span>
+          </div>
+        </div>
+
+        <button id="btn-done-order" class="px-8 py-2.5 rounded-lg bg-purple-600 text-white text-xs font-bold">
+          Continue Shopping
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- =========================================================================
+       12. MOBILE BOTTOM NAVIGATION BAR
+       ========================================================================= -->
+  <div
+    class="mobile-bottom-bar fixed bottom-0 inset-x-0 z-40 bg-white border-t border-slate-200 px-6 py-2.5 items-center justify-between shadow-md">
+    <a href="#" class="flex flex-col items-center text-purple-600">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+        <polyline points="9 22 9 12 15 12 15 22" />
+      </svg>
+      <span class="text-[10px] font-semibold mt-0.5">Home</span>
+    </a>
+
+    <button class="flex flex-col items-center text-slate-500 hover:text-purple-600"
+      onclick="document.getElementById('store-showcase-section').scrollIntoView({behavior:'smooth'})">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="3" y="3" width="7" height="7" />
+        <rect x="14" y="3" width="7" height="7" />
+        <rect x="14" y="14" width="7" height="7" />
+        <rect x="3" y="14" width="7" height="7" />
+      </svg>
+      <span class="text-[10px] font-semibold mt-0.5">3 Tabs</span>
+    </button>
+
+    <button class="btn-open-wishlist flex flex-col items-center text-slate-500 hover:text-purple-600 relative">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path
+          d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+      </svg>
+      <span
+        class="wishlist-badge-count absolute -top-1 right-2 w-4 h-4 rounded-full bg-purple-600 text-white font-bold text-[9px] flex items-center justify-center hidden">0</span>
+      <span class="text-[10px] font-semibold mt-0.5">Wishlist</span>
+    </button>
+
+    <button class="btn-trigger-track flex flex-col items-center text-slate-500 hover:text-purple-600">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 10V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l2-1.14"/>
+        <polyline points="3.29 7 12 12 20.71 7"/>
+        <circle cx="18" cy="18" r="3"/>
+      </svg>
+      <span class="text-[10px] font-semibold mt-0.5">Track</span>
+    </button>
+
+    <button class="btn-open-cart flex flex-col items-center text-slate-500 hover:text-purple-600 relative">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="8" cy="21" r="1" />
+        <circle cx="19" cy="21" r="1" />
+        <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
+      </svg>
+      <span
+        class="cart-badge-count absolute -top-1 right-2 w-4 h-4 rounded-full bg-purple-600 text-white font-bold text-[9px] flex items-center justify-center">0</span>
+      <span class="text-[10px] font-semibold mt-0.5">Cart</span>
+    </button>
+  </div>
+
+
+  <!-- =========================================================================
+       13. FOOTER
+       ========================================================================= -->
+  <footer class="bg-white border-t border-slate-200 mt-16 pt-12 pb-10 text-slate-600 text-xs">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-8 border-b border-slate-200">
+        <div class="space-y-3">
+          <span class="font-heading font-black text-lg text-slate-900">MOTION<span
+              class="text-purple-600">VIEW</span></span>
+          <p>The largest importer and distributor of authentic smart gadgets, smartwatches, true wireless audio, and AI
+            products in Bangladesh.</p>
+          <div class="font-bold text-slate-800">Hotline: 09677460460 (10 AM - 8 PM)</div>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-slate-900 mb-3 uppercase tracking-wider">Top Brands</h4>
+          <ul class="space-y-1.5 text-slate-500">
+            <li><a href="#" class="hover:text-purple-600">OnePlus Official</a></li>
+            <li><a href="#" class="hover:text-purple-600">Anker Bangladesh</a></li>
+            <li><a href="#" class="hover:text-purple-600">Haylou Global</a></li>
+            <li><a href="#" class="hover:text-purple-600">Kospet Smartwatches</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-slate-900 mb-3 uppercase tracking-wider">3 Departments</h4>
+          <ul class="space-y-1.5 text-slate-500">
+            <li><a href="#" class="hover:text-purple-600">AI Shop & Neural Tech</a></li>
+            <li><a href="#" class="hover:text-purple-600">Smart Gadgets & Power</a></li>
+            <li><a href="#" class="hover:text-purple-600">Market & Lifestyle</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="font-bold text-slate-900 mb-3 uppercase tracking-wider">Customer Care</h4>
+          <ul class="space-y-1.5 text-slate-500">
+            <li><a href="#" class="hover:text-purple-600">Warranty Policy</a></li>
+            <li><a href="#" class="hover:text-purple-600">Track Your Order</a></li>
+            <li><a href="#" class="hover:text-purple-600">Outlet Locations</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-slate-400 text-[11px]">
+        <span>&copy; 2026 Motion View. All rights reserved.</span>
+        <span>100% Authentic Products with Official Warranty</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       14. FLOATING LIVE CHAT & SUPPORT WIDGET (Customer & Visitor)
+       ========================================================================= -->
+  <div id="live-chat-floating-btn" class="fixed bottom-20 md:bottom-6 right-5 z-40 flex items-center gap-2 cursor-pointer group">
+    <div class="hidden sm:flex items-center gap-2 bg-white px-3 py-1.5 rounded-full shadow-lg border border-slate-200 text-xs font-bold text-slate-800 group-hover:scale-105 transition-transform">
+      <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+      <span>Live Support</span>
+    </div>
+    <div class="w-13 h-13 sm:w-14 sm:h-14 rounded-full bg-gradient-to-tr from-purple-600 to-indigo-600 text-white flex items-center justify-center shadow-xl shadow-purple-600/30 group-hover:scale-110 group-active:scale-95 transition-all">
+      <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <span class="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-rose-500 text-white text-[9px] font-black flex items-center justify-center ring-2 ring-white">1</span>
+    </div>
+  </div>
+
+  <!-- Live Chat Popup Window -->
+  <div id="live-chat-box" class="fixed bottom-24 md:bottom-22 right-5 z-50 w-84 sm:w-96 bg-white border border-slate-200 rounded-3xl shadow-2xl overflow-hidden hidden flex-col transition-all">
+    <!-- Chat Header -->
+    <div class="bg-gradient-to-r from-purple-600 to-indigo-600 p-4 text-white flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="relative">
+          <div class="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center font-bold text-sm">
+            MV
+          </div>
+          <span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-purple-600"></span>
+        </div>
+        <div>
+          <h4 class="font-heading font-black text-sm leading-tight">Motion View Support</h4>
+          <span class="text-[10px] text-purple-200 font-medium">Online & Ready to Help</span>
+        </div>
+      </div>
+      <button id="btn-close-live-chat" class="w-7 h-7 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center text-base font-bold transition-colors">
+        &times;
+      </button>
+    </div>
+
+    <!-- Chat Messages Scroll Area -->
+    <div id="live-chat-messages" class="p-4 h-72 overflow-y-auto space-y-3 bg-slate-50/70 text-xs">
+      <div class="flex items-start gap-2">
+        <div class="w-7 h-7 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-[10px] font-bold flex-shrink-0">
+          MV
+        </div>
+        <div class="bg-white border border-slate-200 p-3 rounded-2xl rounded-tl-xs shadow-2xs max-w-[80%] text-slate-800">
+          <p class="font-medium">আসসালামু আলাইকুম! Motion View-এ আপনাকে স্বাগতম। আপনার অর্ডার বা কোনো গ্যাজেট সম্পর্কে জানতে এখানে মেসেজ দিন।</p>
+          <span class="text-[9px] text-slate-400 block mt-1">Just now</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chat Input Box -->
+    <form id="live-chat-form" class="p-3 bg-white border-t border-slate-100 flex items-center gap-2">
+      <input type="text" id="live-chat-input" placeholder="Type your message..." required class="flex-1 py-2 px-3 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-800 focus:bg-white focus:outline-none focus:border-purple-600 transition-colors">
+      <button type="submit" class="w-8 h-8 rounded-xl bg-purple-600 hover:bg-purple-700 text-white flex items-center justify-center flex-shrink-0 shadow-xs transition-colors">
+        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </form>
+  </div>
+
+  <!-- =========================================================================
+       15. ORDER TRACKING SEARCH MODAL (অর্ডার ট্র্যাক বক্স)
+       ========================================================================= -->
+  <div id="order-track-modal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs hidden items-center justify-center p-4">
+    <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-slate-200 relative animate-in fade-in zoom-in duration-200">
+      <button id="btn-close-order-track-modal" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center font-bold text-lg transition-colors cursor-pointer">&times;</button>
+      
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-11 h-11 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center shadow-xs">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 10V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l2-1.14"/><polyline points="3.29 7 12 12 20.71 7"/><line x1="12" y1="22" x2="12" y2="12"/><circle cx="18" cy="18" r="3"/><polyline points="18 17 18 19 20 19"/></svg>
+        </div>
+        <div>
+          <h3 class="font-heading font-black text-lg text-slate-900 leading-tight">Order Tracking (অর্ডার ট্র্যাক)</h3>
+          <p class="text-xs text-slate-500">আপনার মোবাইল নাম্বার বা অর্ডার আইডি দিন</p>
+        </div>
+      </div>
+
+      <form id="order-track-search-form" class="space-y-3">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1">Order ID বা ফোন নাম্বার</label>
+          <div class="relative">
+            <input type="text" id="order-track-input" required placeholder="উদাহরণ: REQ-11804 বা 017XXXXXXXX" class="w-full py-2.5 pl-3.5 pr-10 rounded-xl bg-slate-50 border border-slate-300 text-xs text-slate-900 focus:bg-white focus:outline-none focus:border-purple-600 transition-colors">
+            <div class="absolute inset-y-0 right-3 flex items-center pointer-events-none text-slate-400">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full py-2.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs shadow-md shadow-purple-600/25 transition-all flex items-center justify-center gap-2 cursor-pointer">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <span>Track Order (অর্ডার ট্র্যাক করুন)</span>
+        </button>
+      </form>
+
+      <!-- Results Display Box -->
+      <div id="order-track-results" class="mt-4 pt-4 border-t border-slate-100 hidden">
+        <!-- Injected via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Toast Container -->
+  <div id="toast-container"></div>
+
+  <script src="/js/data.js?v=4.0"></script>
+  <script src="/js/store.js?v=4.0"></script>
+  <script src="/js/app.js?v=4.0"></script>
+</body>
+
+</html>

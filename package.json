@@ -1,0 +1,17 @@
+{
+  "name": "nexusmart-ecommerce",
+  "version": "1.0.0",
+  "description": "Futuristic 3-Tab E-Commerce Storefront - AI Shop, Gadgets & Market",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": ["ecommerce", "dark-mode", "tech-store", "nodejs", "express"],
+  "author": "NexusMart",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2",
+    "cors": "^2.8.5"
+  }
+}

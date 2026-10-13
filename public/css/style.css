@@ -1,0 +1,941 @@
+/* ==========================================================================
+   NexusMart / Motion View Style - Clean White High-End Retail Design System
+   Color Palette: Pure White (#FFFFFF), Slate Light (#F8FAFC, #F1F5F9), 
+   Accents: Motion Purple (#7c3aed, #6d28d9), Vibrant Orange (#f97316), Cyan (#06b6d4)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+
+:root {
+  --bg-page: #f8fafc;
+  --bg-card: #ffffff;
+  --bg-subtle: #f1f5f9;
+  --border-light: #e2e8f0;
+  --border-focus: #7c3aed;
+
+  --primary-purple: #7c3aed;
+  --primary-purple-hover: #6d28d9;
+  --primary-purple-light: #f5f3ff;
+
+  --accent-orange: #f97316;
+  --accent-orange-light: #fff7ed;
+
+  --accent-cyan: #0284c7;
+  --accent-cyan-light: #f0f9ff;
+
+  --text-dark: #0f172a;
+  --text-body: #334155;
+  --text-muted: #64748b;
+  --text-subtle: #94a3b8;
+
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Outfit', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  background-color: var(--bg-page);
+  color: var(--text-dark);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background-color: #f8fafc;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Typography Utility */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+/* Cards & Shadows */
+.white-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  transition: all 0.25s ease;
+}
+
+.white-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
+}
+
+/* ==========================================================================
+   Clean Premium Retail Category Badges (Daraz / StarTech Style)
+   ========================================================================== */
+.category-clean-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  cursor: pointer;
+  group: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.category-thumb-box {
+  width: 66px;
+  height: 66px;
+  border-radius: 18px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.12); /* halka black border */
+  box-shadow: none; /* glow removed */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.22s ease;
+}
+
+@media (min-width: 640px) {
+  .category-thumb-box {
+    width: 74px;
+    height: 74px;
+    border-radius: 20px;
+    padding: 10px;
+  }
+}
+
+.category-thumb-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.25s ease;
+}
+
+.category-clean-card:hover .category-thumb-box {
+  border-color: rgba(0, 0, 0, 0.35); /* crisp sleek black border on hover */
+  box-shadow: none; /* absolutely zero glow */
+  transform: translateY(-2px);
+  background: #ffffff;
+}
+
+.category-clean-card:hover .category-thumb-box img {
+  transform: scale(1.08);
+}
+
+.category-clean-card:active .category-thumb-box {
+  transform: translateY(0);
+}
+
+.category-clean-title {
+  margin-top: 8px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #1e293b;
+  text-align: center;
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+  transition: color 0.2s ease;
+}
+
+@media (min-width: 640px) {
+  .category-clean-title {
+    font-size: 12.5px;
+    margin-top: 9px;
+  }
+}
+
+.category-clean-card:hover .category-clean-title {
+  color: #2563eb;
+}
+
+/* Desktop-Only Skyscraper Side Banners (Left & Right) */
+.desktop-side-banner {
+  display: none;
+}
+
+@media (min-width: 1440px) {
+  .desktop-side-banner {
+    display: block;
+    position: fixed;
+    top: 78px;
+    width: 180px;
+    z-index: 30;
+    transition: all 0.3s ease;
+  }
+  .desktop-side-banner.left-banner {
+    left: calc((100vw - 1280px) / 2 - 195px);
+  }
+  .desktop-side-banner.right-banner {
+    right: calc((100vw - 1280px) / 2 - 195px);
+  }
+  .desktop-side-banner img {
+    width: 100%;
+    height: auto;
+    max-height: calc(100vh - 95px);
+    object-fit: cover;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.1);
+    border: 1px solid #e2e8f0;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+  }
+  .desktop-side-banner:hover img {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px -6px rgba(15, 23, 42, 0.16);
+  }
+}
+
+@media (min-width: 1600px) {
+  .desktop-side-banner {
+    width: 200px;
+  }
+  .desktop-side-banner.left-banner {
+    left: calc((100vw - 1280px) / 2 - 215px);
+  }
+  .desktop-side-banner.right-banner {
+    right: calc((100vw - 1280px) / 2 - 215px);
+  }
+}
+
+/* Product Card - Modern E-Commerce Luxury Design */
+.product-card-clean {
+  background: #ffffff;
+  border: 1px solid #edf2f7;
+  border-radius: 18px;
+  padding: 12px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 14px -2px rgba(15, 23, 42, 0.05);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (min-width: 640px) {
+  .product-card-clean {
+    border-radius: 20px;
+    padding: 16px;
+  }
+}
+
+.product-card-clean:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 20px 30px -10px rgba(15, 23, 42, 0.12), 0 10px 15px -5px rgba(15, 23, 42, 0.04);
+  transform: translateY(-4px);
+}
+
+.product-img-wrapper {
+  aspect-ratio: 1/1;
+  border-radius: 14px;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 12px;
+  border: 1px solid #f1f5f9;
+}
+
+@media (min-width: 640px) {
+  .product-img-wrapper {
+    margin-bottom: 14px;
+  }
+}
+
+.product-img-wrapper img,
+.product-img-wrapper svg {
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.product-card-clean:hover .product-img-wrapper img,
+.product-card-clean:hover .product-img-wrapper svg {
+  transform: scale(1.08);
+}
+
+/* Product Card Title */
+.product-card-title {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: #0f172a;
+  font-size: 13px;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 2.3rem;
+  margin-bottom: 6px;
+  transition: color 0.2s ease;
+}
+
+@media (min-width: 640px) {
+  .product-card-title {
+    font-size: 14px;
+    min-height: 2.6rem;
+    margin-bottom: 8px;
+  }
+}
+
+/* Discount / Status Badges */
+.discount-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  z-index: 5;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.3);
+}
+
+@media (min-width: 640px) {
+  .discount-tag {
+    font-size: 10.5px;
+    padding: 3px 9px;
+    border-radius: 8px;
+    top: 12px;
+    left: 12px;
+  }
+}
+
+/* Brand Badge Top Right */
+.brand-tag {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 9px;
+  font-weight: 800;
+  color: #64748b;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 2px 7px;
+  border-radius: 6px;
+  backdrop-blur: 4px;
+  border: 1px solid rgba(226, 232, 240, 0.6);
+  z-index: 5;
+}
+
+@media (min-width: 640px) {
+  .brand-tag {
+    top: 12px;
+    right: 12px;
+    font-size: 10px;
+  }
+}
+
+/* Warranty Tag Bottom Right of Image */
+.warranty-tag {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  font-size: 9px;
+  font-weight: 700;
+  background: #f1f5f9;
+  color: #475569;
+  padding: 2px 7px;
+  border-radius: 6px;
+  z-index: 5;
+}
+
+@media (min-width: 640px) {
+  .warranty-tag {
+    bottom: 10px;
+    right: 10px;
+    font-size: 10px;
+    padding: 2px 8px;
+  }
+}
+
+/* Add to Cart Button (Subtle 4 corners rounded modern button) */
+.btn-card-add-cart {
+  width: 100%;
+  padding: 9px 14px;
+  border-radius: 6px;
+  background: #2563eb;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.2);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.btn-card-add-cart:hover {
+  background: #1d4ed8;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  transform: translateY(-1.5px);
+}
+
+.btn-card-add-cart:active {
+  transform: translateY(0);
+}
+
+/* Add to Cart Bag Button Fallback */
+.btn-bag-add {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #2563eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+@media (min-width: 640px) {
+  .btn-bag-add {
+    width: 38px;
+    height: 38px;
+    border-radius: 11px;
+  }
+}
+
+.btn-bag-add:hover {
+  background: #2563eb;
+  color: #ffffff;
+  border-color: #2563eb;
+  transform: scale(1.05);
+}
+
+/* Category Pill / Squircle Item - Colorful Modern Luxury Boxes */
+.category-circle-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 6px 4px;
+}
+
+.category-circle-icon {
+  width: 58px;
+  height: 48px;
+  border-radius: 10px;
+  background: #2563eb;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08); /* Clean subtle shadow, no glow */
+}
+
+/* Luxury Lighting Effect (Top Gloss Highlight) */
+.category-circle-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 48%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.03) 100%);
+  border-radius: 10px 10px 0 0;
+  pointer-events: none;
+}
+
+/* Dynamic Light Sweep Shimmer Effect on Hover */
+.category-circle-icon::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -70%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transform: rotate(25deg);
+  pointer-events: none;
+  transition: all 0.6s ease;
+  opacity: 0;
+}
+
+.category-circle-item:hover .category-circle-icon::after {
+  left: 130%;
+  opacity: 1;
+}
+
+@media (min-width: 640px) {
+  .category-circle-icon {
+    width: 72px;
+    height: 52px;
+    border-radius: 12px;
+    margin-bottom: 9px;
+  }
+  .category-circle-icon::before {
+    border-radius: 12px 12px 0 0;
+  }
+}
+
+.category-circle-item:hover .category-circle-icon {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.12);
+}
+
+/* Individual Category Box Themes - Solid Colors Without Glow */
+.cat-box-indigo {
+  background: #2563eb;
+  color: #ffffff;
+}
+.cat-box-rose {
+  background: #e11d48;
+  color: #ffffff;
+}
+.cat-box-amber {
+  background: #ea580c;
+  color: #ffffff;
+}
+.cat-box-emerald {
+  background: #059669;
+  color: #ffffff;
+}
+.cat-box-cyan {
+  background: #0284c7;
+  color: #ffffff;
+}
+.cat-box-purple {
+  background: #7c3aed;
+  color: #ffffff;
+}
+.cat-box-blue {
+  background: #2563eb;
+  color: #ffffff;
+}
+.cat-box-violet {
+  background: #6366f1;
+  color: #ffffff;
+}
+
+.category-title {
+  font-family: var(--font-heading);
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #1e293b;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  transition: color 0.2s ease;
+}
+
+@media (min-width: 640px) {
+  .category-title {
+    font-size: 12.5px;
+  }
+}
+
+.category-circle-item:hover .category-title {
+  color: #2563eb;
+  font-weight: 800;
+}
+
+/* 3-Section Tab Pills - Clean, Premium Executive Business Style */
+.tab-pill {
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #334155;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+@media (min-width: 640px) {
+  .tab-pill {
+    padding: 7px 16px;
+    font-size: 12.5px;
+    gap: 8px;
+  }
+}
+
+.tab-pill:hover {
+  color: #0f172a;
+  border-color: #cbd5e1;
+  background: #f8fafc;
+  box-shadow: 0 2px 5px rgba(15, 23, 42, 0.05);
+}
+
+.tab-pill.active {
+  background: #0f172a;
+  color: #ffffff;
+  border-color: #0f172a;
+  box-shadow: 0 2px 6px -1px rgba(15, 23, 42, 0.16);
+}
+
+.tab-pill.active svg {
+  color: #ffffff;
+}
+
+.tab-pill-badge {
+  padding: 1px 6px;
+  border-radius: 9999px;
+  font-size: 9.5px;
+  font-weight: 700;
+  background: #f1f5f9;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s ease;
+}
+
+@media (min-width: 640px) {
+  .tab-pill-badge {
+    padding: 2px 7px;
+    font-size: 10.5px;
+  }
+}
+
+.tab-pill.active .tab-pill-badge {
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* Drawers & Modals */
+.drawer-backdrop {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.drawer-backdrop.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.drawer-panel {
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.drawer-backdrop.open .drawer-panel {
+  transform: translateX(0);
+}
+
+.modal-wrapper {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-wrapper.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.modal-content-box {
+  transform: scale(0.95) translateY(20px);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal-wrapper.open .modal-content-box {
+  transform: scale(1) translateY(0);
+}
+
+/* Toast Notifications */
+#toast-container {
+  position: fixed;
+  bottom: 75px;
+  right: 16px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  pointer-events: none;
+}
+
+@media (min-width: 768px) {
+  #toast-container {
+    bottom: 24px;
+    right: 24px;
+    gap: 10px;
+  }
+}
+
+.toast-card {
+  pointer-events: auto;
+  min-width: 260px;
+  max-width: 360px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: #0f172a;
+  color: #ffffff;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: slideInToast 0.25s ease forwards;
+  transition: all 0.25s ease;
+}
+
+.toast-card.fade-out {
+  opacity: 0;
+  transform: translateX(40px);
+}
+
+@keyframes slideInToast {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Mobile Bottom Navigation Bar */
+.mobile-bottom-bar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-bottom-bar {
+    display: flex;
+  }
+
+  body {
+    padding-bottom: 68px;
+  }
+}
+
+/* ==========================================================================
+   Dedicated Product Details Page (PDP) - Clean Luxury Retail Styling
+   ========================================================================== */
+#product-detail-view {
+  animation: fadeInPDP 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeInPDP {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Clean Snug PDP Image Gallery */
+.pdp-gallery-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+}
+
+.pdp-main-image-frame {
+  width: 100%;
+  max-width: 380px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 18px;
+  padding: 16px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: none;
+  cursor: crosshair;
+  overflow: hidden;
+  user-select: none;
+}
+
+.pdp-main-image-frame img {
+  width: 100%;
+  height: auto;
+  max-height: 340px;
+  object-fit: contain;
+  display: block;
+  pointer-events: none;
+}
+
+/* Lens Indicator */
+.pdp-zoom-lens {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border: 1.5px solid #2563eb;
+  background-color: rgba(37, 99, 235, 0.15);
+  pointer-events: none;
+  display: none;
+  border-radius: 8px;
+  z-index: 20;
+}
+
+/* Floating Zoom Window on Right Side */
+.pdp-zoom-window {
+  position: absolute;
+  top: 0;
+  left: 105%;
+  width: 440px;
+  height: 440px;
+  background-color: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 18px;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  display: none;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.pdp-zoom-window img {
+  position: absolute;
+  max-width: none;
+  max-height: none;
+}
+
+/* Thumbnails Strip */
+.pdp-thumbnails-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.pdp-thumb-btn {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  border: 1.5px solid rgba(0, 0, 0, 0.12);
+  background: #ffffff;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  overflow: hidden;
+}
+
+.pdp-thumb-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.pdp-thumb-btn.active {
+  border-color: #2563eb;
+  border-width: 2px;
+}
+
+.pdp-thumb-btn:hover {
+  border-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Star Rating Input */
+.star-rating-select {
+  display: flex;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.star-rating-select svg {
+  width: 20px;
+  height: 20px;
+  fill: #cbd5e1;
+  color: #cbd5e1;
+  transition: fill 0.15s ease, transform 0.15s ease;
+}
+
+.star-rating-select svg.filled {
+  fill: #f59e0b;
+  color: #f59e0b;
+}
+
+.star-rating-select svg:hover {
+  transform: scale(1.15);
+}
+
+/* Sticky Mobile Order Bar */
+.pdp-mobile-sticky-bar {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .pdp-mobile-sticky-bar {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 45;
+    background: #ffffff;
+    border-top: 1px solid #e2e8f0;
+    padding: 10px 14px;
+    box-shadow: 0 -4px 15px -3px rgba(15, 23, 42, 0.08);
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+}
