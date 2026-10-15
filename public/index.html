@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Motion View | Biggest Smart Gadget, AI & Eco Product Collection</title>
+  <title>JP Gadget Bazar | Biggest Smart Gadget, AI & Eco Product Collection</title>
   <meta name="description"
     content="Shop 100% authentic smart gadgets, smartwatches, true wireless earbuds, fast chargers, AI hardware, and modern accessories with official warranty.">
 
@@ -31,7 +31,7 @@
   </script>
 
   <!-- Clean White Motion View Theme CSS -->
-  <link rel="stylesheet" href="/css/style.css?v=4.2">
+  <link rel="stylesheet" href="/css/style.css?v=4.3">
 </head>
 
 <body class="bg-[#f8fafc] text-slate-800 antialiased selection:bg-purple-600 selection:text-white">
@@ -54,8 +54,8 @@
                 <polyline points="2 12 12 17 22 12" />
               </svg>
             </div>
-            <span class="font-heading font-black text-lg sm:text-xl tracking-tight text-slate-900">MOTION<span
-                class="text-purple-600">VIEW</span></span>
+            <span class="font-heading font-black text-lg sm:text-xl tracking-tight text-slate-900">JP GADGET <span
+                class="text-purple-600">BAZAR</span></span>
           </div>
         </a>
 
@@ -140,6 +140,15 @@
                 class="cart-badge-count absolute -top-1.5 -right-2 w-4 h-4 rounded-full bg-purple-600 text-white font-bold text-[9px] flex items-center justify-center">0</span>
             </div>
           </button>
+
+          <!-- Desktop Header Profile Button (Web Mode) -->
+          <button id="desktop-header-profile-btn" class="hidden sm:flex items-center gap-2 pl-2 pr-3 py-1.5 rounded-full hover:bg-slate-100 border border-slate-200 text-slate-700 transition-all cursor-pointer group" title="My Account & Details">
+            <div class="w-7 h-7 rounded-full bg-gradient-to-tr from-purple-600 to-indigo-600 text-white font-bold text-xs flex items-center justify-center shadow-xs">
+              JP
+            </div>
+            <span class="text-xs font-bold text-slate-800 group-hover:text-purple-600 transition-colors">Profile</span>
+            <svg class="w-3.5 h-3.5 text-slate-400 group-hover:text-purple-600 transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
         </div>
       </div>
 
@@ -174,21 +183,21 @@
     <!-- Left Skyscraper Banner (Desktop PC Only) -->
     <aside class="desktop-side-banner left-banner" aria-label="Special Offers">
       <a href="/category/gadgets" class="block">
-        <img src="/side-banner-left.png?v=1.0" alt="Motion View Best Deal 40% Discount" loading="lazy">
+        <img src="/side-banner-left.png?v=1.0" alt="JP Gadget Bazar Best Deal 40% Discount" loading="lazy">
       </a>
     </aside>
 
     <!-- Right Skyscraper Banner (Desktop PC Only) -->
     <aside class="desktop-side-banner right-banner" aria-label="Trending Gadgets">
       <a href="/category/gadgets" class="block">
-        <img src="/side-banner-right.png?v=1.0" alt="Upgrade Your Everyday Life - Motion View" loading="lazy">
+        <img src="/side-banner-right.png?v=1.0" alt="Upgrade Your Everyday Life - JP Gadget Bazar" loading="lazy">
       </a>
     </aside>
 
     <!-- 4. OFFICIAL CUSTOM HERO BANNER (1200 x 300 px) -->
     <section class="max-w-7xl mx-auto px-3 sm:px-6 py-2 sm:py-2.5">
       <div class="rounded-xl sm:rounded-2xl overflow-hidden shadow-xs border border-slate-200 bg-white">
-        <img id="store-hero-banner-img" src="/hero-banner.png?v=2.0" alt="Motion View Official Top Banner"
+        <img id="store-hero-banner-img" src="/hero-banner.png?v=2.0" alt="JP Gadget Bazar Official Top Banner"
           class="w-full h-auto object-cover block" style="aspect-ratio: 1200 / 300; min-height: 85px;" />
       </div>
     </section>
@@ -449,6 +458,424 @@
 
 
   <!-- =========================================================================
+       DEDICATED PROFILE & LOGIN / REGISTER PAGE VIEW (/profile)
+       ========================================================================= -->
+  <main id="user-auth-profile-view" class="hidden min-h-[75vh] max-w-4xl mx-auto px-4 py-8 sm:py-14">
+    <!-- 1. Guest / Logged-Out State: Beautiful Login & Register Form -->
+    <div id="auth-guest-section" class="max-w-md mx-auto">
+      <div class="text-center mb-6">
+        <div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-purple-600 to-indigo-600 text-white font-black text-xl flex items-center justify-center mx-auto mb-3 shadow-lg shadow-purple-600/30">
+          JP
+        </div>
+        <h1 class="font-heading font-black text-2xl sm:text-3xl text-slate-900 tracking-tight">JP Gadget Bazar Account</h1>
+        <p class="text-xs sm:text-sm text-slate-500 mt-1">লগইন বা রেজিস্ট্রেশন করে অর্ডার ট্র্যাক করুন ও ডিল উপভোগ করুন</p>
+      </div>
+
+      <!-- Segmented Tab Controls: Login vs Register -->
+      <div class="bg-slate-100 p-1 rounded-2xl flex items-center mb-6 border border-slate-200">
+        <button id="auth-tab-login" class="flex-1 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all shadow-xs bg-white text-purple-700 cursor-pointer">
+          Login (লগইন)
+        </button>
+        <button id="auth-tab-register" class="flex-1 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-slate-600 hover:text-slate-900 transition-all cursor-pointer">
+          Register (নতুন একাউন্ট)
+        </button>
+      </div>
+
+      <!-- Auth Form Box -->
+      <div class="bg-white rounded-3xl border border-slate-200 shadow-xl shadow-slate-100/80 p-6 sm:p-8">
+        
+        <!-- Login Form -->
+        <form id="form-user-login" class="space-y-4">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1.5">মোবাইল নাম্বার বা ইমেইল</label>
+            <div class="relative">
+              <input type="text" id="login-phone" required placeholder="017XXXXXXXX বা user@mail.com" class="w-full py-3 pl-4 pr-10 rounded-xl bg-slate-50 border border-slate-300 text-xs sm:text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-purple-600 transition-all font-mono" />
+              <div class="absolute inset-y-0 right-3.5 flex items-center pointer-events-none text-slate-400">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="flex items-center justify-between mb-1.5">
+              <label class="block text-xs font-bold text-slate-700">পাসওয়ার্ড</label>
+              <a href="javascript:void(0);" onclick="alert('অনুগ্রহ করে কাস্টমার সাপোর্টে যোগাযোগ করুন: 09677460460');" class="text-[11px] text-purple-600 hover:underline font-semibold">পাসওয়ার্ড ভুলে গেছেন?</a>
+            </div>
+            <input type="password" id="login-password" required placeholder="••••••••" class="w-full py-3 px-4 rounded-xl bg-slate-50 border border-slate-300 text-xs sm:text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-purple-600 transition-all" />
+          </div>
+
+          <button type="submit" class="w-full py-3.5 rounded-xl bg-purple-600 hover:bg-purple-700 active:scale-[0.99] text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-purple-600/25 transition-all cursor-pointer">
+            <span>Login to Account (লগইন করুন)</span>
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </form>
+
+        <!-- Register Form -->
+        <form id="form-user-register" class="space-y-4 hidden">
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1.5">আপনার পূর্ণ নাম (Full Name)</label>
+            <input type="text" id="reg-name" required placeholder="যেমন: Tanvir Ahmed" class="w-full py-3 px-4 rounded-xl bg-slate-50 border border-slate-300 text-xs sm:text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-purple-600 transition-all" />
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1.5">মোবাইল নাম্বার</label>
+            <input type="tel" id="reg-phone" required placeholder="017XXXXXXXX" class="w-full py-3 px-4 rounded-xl bg-slate-50 border border-slate-300 text-xs sm:text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-purple-600 transition-all font-mono" />
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1.5">পাসওয়ার্ড তৈরি করুন</label>
+            <input type="password" id="reg-password" required placeholder="কমপক্ষে ৬ ডিজিটের পাসওয়ার্ড" class="w-full py-3 px-4 rounded-xl bg-slate-50 border border-slate-300 text-xs sm:text-sm text-slate-900 focus:bg-white focus:outline-none focus:border-purple-600 transition-all" />
+          </div>
+
+          <button type="submit" class="w-full py-3.5 rounded-xl bg-purple-600 hover:bg-purple-700 active:scale-[0.99] text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-purple-600/25 transition-all cursor-pointer">
+            <span>Create New Account (রেজিস্ট্রেশন করুন)</span>
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </form>
+
+        <!-- Fast Guest Order Quick Login Helper -->
+        <div class="mt-5 pt-4 border-t border-slate-100 text-center">
+          <p class="text-xs text-slate-500 mb-2">অথবা ডেমো একাউন্টে ১-ক্লিকে প্রবেশ করুন:</p>
+          <button id="btn-quick-demo-login" type="button" class="inline-flex items-center gap-1.5 py-1.5 px-3.5 rounded-lg bg-purple-50 hover:bg-purple-100 text-purple-700 text-xs font-bold transition-colors cursor-pointer">
+            <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+            <span>One-Click Instant Login (01711223344)</span>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 2. Authenticated State: Full-Page Dashboard -->
+    <div id="auth-logged-in-section" class="hidden">
+      
+      <!-- =====================================================================
+           A. MOBILE-ONLY DARAZ-STYLE PROFILE VIEW (Only on Phone screens, Screenshot Match)
+           ===================================================================== -->
+      <div class="block md:hidden -mx-4 -mt-8 sm:-mt-14 pb-12 bg-slate-50 min-h-screen">
+        
+        <!-- Top App Bar / Header -->
+        <div class="bg-gradient-to-b from-purple-100/70 via-pink-50/40 to-slate-50 px-4 pt-5 pb-3">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-3">
+              <!-- Avatar with Camera icon -->
+              <div class="relative">
+                <div class="w-14 h-14 rounded-full bg-white border-2 border-purple-200 flex items-center justify-center font-black text-xl text-purple-700 shadow-sm overflow-hidden">
+                  <span id="mobile-daraz-avatar">TA</span>
+                </div>
+                <div class="absolute -bottom-0.5 -right-0.5 w-5 h-5 rounded-full bg-slate-800 text-white flex items-center justify-center shadow-xs">
+                  <svg class="w-2.5 h-2.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+                </div>
+              </div>
+
+              <!-- Username & Subtext -->
+              <div>
+                <h3 id="mobile-daraz-username" class="font-heading font-black text-lg text-slate-900 leading-tight">chillshop51</h3>
+                <div class="flex items-center gap-2 text-[11px] text-slate-500 mt-1 font-medium">
+                  <span><strong class="text-slate-800">0</strong> Wishlist</span>
+                  <span>&bull;</span>
+                  <span><strong class="text-slate-800">1</strong> Followed</span>
+                  <span>&bull;</span>
+                  <span><strong class="text-slate-800">7</strong> Vouchers</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Settings / Logout Gear -->
+            <button id="mobile-daraz-settings-btn" class="w-8 h-8 rounded-full bg-white/80 border border-slate-200 flex items-center justify-center text-slate-700 shadow-2xs hover:bg-white" title="Account Settings / Logout">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            </button>
+          </div>
+
+          <!-- Dual Promotional Banners (Coins & Freebie) -->
+          <div class="grid grid-cols-2 gap-2.5 mb-3">
+            <div class="bg-white rounded-2xl p-2.5 border border-purple-100 shadow-2xs flex items-center gap-2">
+              <div class="w-10 h-10 rounded-xl bg-purple-600 text-white flex items-center justify-center font-black text-[10px] text-center leading-none flex-shrink-0 shadow-xs">
+                UP TO<br>60%
+              </div>
+              <div class="min-w-0">
+                <div class="text-[11px] font-bold text-slate-800 truncate flex items-center gap-0.5">
+                  <span>JP Coins</span>
+                  <svg class="w-3 h-3 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                </div>
+                <span class="text-[9px] font-bold text-rose-500 block">60% OFF</span>
+                <span class="inline-block mt-0.5 px-2 py-0.5 rounded-full bg-rose-500 text-white text-[8px] font-black uppercase">SHOP HERE</span>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-2xl p-2.5 border border-indigo-100 shadow-2xs flex items-center gap-2">
+              <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-purple-700 to-indigo-600 text-yellow-300 flex items-center justify-center font-black text-[10px] text-center leading-none flex-shrink-0 shadow-xs">
+                FREE
+              </div>
+              <div class="min-w-0">
+                <div class="text-[11px] font-bold text-slate-800 truncate flex items-center gap-0.5">
+                  <span>JP Freebies</span>
+                  <svg class="w-3 h-3 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                </div>
+                <span class="text-[9px] font-semibold text-slate-500 block">Invite & Win</span>
+                <span class="inline-block mt-0.5 px-2 py-0.5 rounded-full bg-orange-500 text-white text-[8px] font-black uppercase">PLAY NOW</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Feature Icons Carousel (Daraz Land, Candy, Save More, Vouchers, New Arrivals) -->
+          <div class="grid grid-cols-5 gap-1.5 text-center pt-1">
+            <div class="flex flex-col items-center">
+              <div class="w-10 h-10 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center mb-1 shadow-2xs">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a9 9 0 0 1 9 9c0 4.97-4.03 9-9 9s-9-4.03-9-9a9 9 0 0 1 9-9Z"/><path d="M12 7v5l3 3"/></svg>
+              </div>
+              <span class="text-[10px] font-medium text-slate-700 leading-tight">JP Land</span>
+            </div>
+
+            <div class="flex flex-col items-center">
+              <div class="w-10 h-10 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center mb-1 shadow-2xs">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m14.31 8 5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16 3.95 6.06M14.31 16H2.83M16.62 12l-5.74 9.94"/></svg>
+              </div>
+              <span class="text-[10px] font-medium text-slate-700 leading-tight">Gifts & Fun</span>
+            </div>
+
+            <div class="flex flex-col items-center">
+              <div class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center mb-1 shadow-2xs">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+              </div>
+              <span class="text-[10px] font-medium text-slate-700 leading-tight">Buy More</span>
+            </div>
+
+            <div class="flex flex-col items-center">
+              <div class="w-10 h-10 rounded-2xl bg-purple-100 text-purple-600 flex items-center justify-center mb-1 shadow-2xs">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+              </div>
+              <span class="text-[10px] font-medium text-slate-700 leading-tight">Vouchers</span>
+            </div>
+
+            <div class="flex flex-col items-center">
+              <div class="w-10 h-10 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center mb-1 shadow-2xs">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </div>
+              <span class="text-[10px] font-medium text-slate-700 leading-tight">Arrivals</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: My Orders (Exact Match to Screenshot) -->
+        <div class="px-4 mt-3">
+          <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200/80">
+            <!-- Header -->
+            <div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-3">
+              <h4 class="font-heading font-black text-sm text-slate-900">My Orders</h4>
+              <a href="/track-order.bd" class="text-xs font-semibold text-slate-500 hover:text-purple-600 flex items-center gap-1">
+                <span>View All Orders</span>
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+              </a>
+            </div>
+
+            <!-- 5 Order Status Icons: To Pay, To Ship, To Receive, To Review, Returns -->
+            <div class="grid grid-cols-5 gap-1 text-center py-1">
+              <!-- 1. To Pay -->
+              <a href="/cart" class="flex flex-col items-center group">
+                <div class="w-9 h-9 text-orange-500 flex items-center justify-center mb-1 group-active:scale-95 transition-transform">
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+                </div>
+                <span class="text-[11px] font-medium text-slate-700 leading-tight">To Pay</span>
+              </a>
+
+              <!-- 2. To Ship (Badge 1) -->
+              <a href="/track-order.bd" class="flex flex-col items-center relative group">
+                <div class="w-9 h-9 text-orange-500 flex items-center justify-center mb-1 group-active:scale-95 transition-transform relative">
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                  <span class="absolute -top-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-rose-500 text-white font-bold text-[8px] flex items-center justify-center ring-1 ring-white">1</span>
+                </div>
+                <span class="text-[11px] font-medium text-slate-700 leading-tight">To Ship</span>
+              </a>
+
+              <!-- 3. To Receive -->
+              <a href="/track-order.bd" class="flex flex-col items-center group">
+                <div class="w-9 h-9 text-orange-500 flex items-center justify-center mb-1 group-active:scale-95 transition-transform">
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                </div>
+                <span class="text-[11px] font-medium text-slate-700 leading-tight">To Receive</span>
+              </a>
+
+              <!-- 4. To Review -->
+              <a href="javascript:void(0);" onclick="alert('পণ্যটি হাতে পাওয়ার পর রিভিউ দিতে পারবেন।');" class="flex flex-col items-center group">
+                <div class="w-9 h-9 text-orange-500 flex items-center justify-center mb-1 group-active:scale-95 transition-transform">
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </div>
+                <span class="text-[11px] font-medium text-slate-700 leading-tight">To Review</span>
+              </a>
+
+              <!-- 5. Returns -->
+              <a href="javascript:void(0);" onclick="alert('রিটার্ন পলিসি জানতে কল করুন: 09677460460');" class="flex flex-col items-center group">
+                <div class="w-9 h-9 text-orange-500 flex items-center justify-center mb-1 group-active:scale-95 transition-transform">
+                  <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+                </div>
+                <span class="text-[10px] font-medium text-slate-700 leading-tight">Returns</span>
+              </a>
+            </div>
+
+            <!-- Active Order Status Card (Seller to Pack) -->
+            <a href="/track-order.bd" class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between gap-3 text-xs bg-slate-50/70 p-2.5 rounded-xl hover:bg-slate-100/70 transition-colors block">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-lg bg-white border border-slate-200 flex items-center justify-center p-1 flex-shrink-0">
+                  <img src="/gadgate/177926078848.webp" alt="Order" class="w-full h-full object-contain" />
+                </div>
+                <div>
+                  <div class="font-bold text-slate-800 flex items-center gap-1 text-[11px]">
+                    <span>Seller to Pack</span>
+                    <svg class="w-3 h-3 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+                  </div>
+                  <p class="text-[10px] text-slate-500">Seller is preparing your smart gadget order</p>
+                </div>
+              </div>
+              <span class="text-[10px] font-mono text-slate-400 flex-shrink-0">20:40 Today</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Section: Shopping Fest Promo Banner -->
+        <div class="px-4 mt-3">
+          <div class="rounded-2xl overflow-hidden shadow-xs border border-purple-200 bg-gradient-to-r from-purple-600 via-indigo-600 to-rose-600 text-white p-3.5 flex items-center justify-between">
+            <div>
+              <span class="text-[9px] font-black uppercase tracking-wider bg-yellow-400 text-slate-900 px-2 py-0.5 rounded-full">JP FEST DEALS</span>
+              <h5 class="font-heading font-black text-sm mt-1">Big Deals All Week!</h5>
+              <p class="text-[10px] text-purple-100">Buy 3 Get Free Express Delivery</p>
+            </div>
+            <a href="/" class="px-3 py-1.5 rounded-xl bg-white text-purple-700 font-bold text-xs shadow-xs">Shop Now</a>
+          </div>
+        </div>
+
+        <!-- Section: Recently Viewed (Products Carousel) -->
+        <div class="px-4 mt-4">
+          <div class="flex items-center justify-between mb-2.5">
+            <h4 class="font-heading font-black text-sm text-slate-900">Recently Viewed</h4>
+            <a href="/" class="text-xs font-semibold text-slate-500 hover:text-purple-600 flex items-center gap-1">
+              <span>View More</span>
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            </a>
+          </div>
+
+          <!-- Product Mini Grid -->
+          <div class="grid grid-cols-3 gap-2">
+            <!-- 1. Powerbank -->
+            <a href="/product/ankernano45w-ANK45X78" class="bg-white rounded-xl border border-slate-200/80 p-2 block relative group shadow-2xs">
+              <span class="absolute top-1.5 left-1.5 px-1.5 py-0.5 rounded bg-rose-500 text-white text-[8px] font-bold">&darr; 40%</span>
+              <div class="w-full aspect-square flex items-center justify-center p-1 mb-1">
+                <img src="/gadgate/177926078848.webp" alt="Anker Charger" class="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+              </div>
+              <span class="block text-[11px] font-black text-slate-900 leading-tight">৳3,999</span>
+              <span class="block text-[9px] text-slate-400 line-through">৳4,499</span>
+            </a>
+
+            <!-- 2. Smartwatch -->
+            <a href="/product/imikixplorer-IMK88X17" class="bg-white rounded-xl border border-slate-200/80 p-2 block relative group shadow-2xs">
+              <span class="absolute top-1.5 left-1.5 px-1.5 py-0.5 rounded bg-rose-500 text-white text-[8px] font-bold">&darr; 55%</span>
+              <div class="w-full aspect-square flex items-center justify-center p-1 mb-1">
+                <img src="/gadgate/177315710478.webp" alt="Smartwatch" class="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+              </div>
+              <span class="block text-[11px] font-black text-slate-900 leading-tight">৳4,999</span>
+              <span class="block text-[9px] text-slate-400 line-through">৳5,999</span>
+            </a>
+
+            <!-- 3. Bluetooth Speaker -->
+            <a href="/product/soundcoreselect2-SND4481" class="bg-white rounded-xl border border-slate-200/80 p-2 block relative group shadow-2xs">
+              <span class="absolute top-1.5 left-1.5 px-1.5 py-0.5 rounded bg-rose-500 text-white text-[8px] font-bold">&darr; 60%</span>
+              <div class="w-full aspect-square flex items-center justify-center p-1 mb-1">
+                <img src="/gadgate/17886040005.webp" alt="Speakers" class="w-full h-full object-contain group-hover:scale-105 transition-transform" />
+              </div>
+              <span class="block text-[11px] font-black text-slate-900 leading-tight">৳2,750</span>
+              <span class="block text-[9px] text-slate-400 line-through">৳3,450</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Logout / Switch Button for Mobile -->
+        <div class="px-4 mt-6 text-center">
+          <button id="btn-mobile-daraz-logout" class="w-full py-3 rounded-2xl bg-white border border-slate-300 text-rose-600 font-bold text-xs hover:bg-rose-50 transition-colors shadow-2xs flex items-center justify-center gap-2 cursor-pointer">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            <span>Log Out of JP Gadget Bazar</span>
+          </button>
+        </div>
+
+      </div>
+
+
+      <!-- =====================================================================
+           B. DESKTOP / PC WEB PROFILE VIEW (Hidden on Mobile, Displayed on Desktop md:block)
+           ===================================================================== -->
+      <div class="hidden md:block space-y-6">
+        <!-- Top Profile Banner -->
+        <div class="bg-gradient-to-r from-purple-700 via-indigo-700 to-purple-800 rounded-3xl p-6 sm:p-8 text-white shadow-xl flex items-center justify-between gap-6">
+          <div class="flex items-center gap-5 text-left">
+            <div id="profile-page-avatar" class="w-20 h-20 rounded-full bg-white/20 border-2 border-white/40 flex items-center justify-center font-black text-2xl shadow-md">
+              JP
+            </div>
+            <div>
+              <div class="inline-block px-2.5 py-0.5 rounded-full bg-emerald-400/20 text-emerald-300 text-[10px] font-bold uppercase tracking-wider mb-1">
+                Verified Member
+              </div>
+              <h2 id="profile-page-name" class="font-heading font-black text-2xl sm:text-3xl leading-tight">Tanvir Ahmed</h2>
+              <p id="profile-page-phone" class="text-xs text-purple-200 font-mono mt-0.5">01711223344</p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <button id="btn-open-cart-from-profile" class="btn-open-cart px-4 py-2.5 rounded-xl bg-white text-purple-700 font-bold text-xs hover:bg-purple-50 transition-colors shadow-xs flex items-center gap-2 cursor-pointer">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+              <span>View Cart</span>
+            </button>
+            <button id="btn-page-logout" class="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs transition-colors border border-white/20 flex items-center gap-1.5 cursor-pointer">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+              <span>Logout</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Quick Action Grid -->
+        <div class="grid grid-cols-3 gap-4">
+          <!-- Card 1: Track Order -->
+          <a href="/track-order.bd" class="bg-white p-5 rounded-2xl border border-slate-200 hover:border-purple-300 hover:shadow-md transition-all group block">
+            <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 10V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l2-1.14"/><circle cx="18" cy="18" r="3"/><polyline points="18 17 18 19 20 19"/></svg>
+            </div>
+            <h4 class="font-bold text-slate-900 text-sm mb-1 group-hover:text-purple-600 transition-colors">Track Orders</h4>
+            <p class="text-xs text-slate-500">View live status of pending parcels and delivery details.</p>
+          </a>
+
+          <!-- Card 2: Wishlist -->
+          <div id="btn-profile-page-wishlist" class="btn-open-wishlist bg-white p-5 rounded-2xl border border-slate-200 hover:border-rose-300 hover:shadow-md transition-all group cursor-pointer">
+            <div class="w-10 h-10 rounded-xl bg-rose-50 text-rose-500 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            </div>
+            <h4 class="font-bold text-slate-900 text-sm mb-1 group-hover:text-rose-500 transition-colors">Saved Wishlist</h4>
+            <p class="text-xs text-slate-500">Access saved smart gadgets and special deals.</p>
+          </div>
+
+          <!-- Card 3: Support -->
+          <a href="/message" class="bg-white p-5 rounded-2xl border border-slate-200 hover:border-emerald-300 hover:shadow-md transition-all group block">
+            <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center mb-3 group-hover:scale-105 transition-transform">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <h4 class="font-bold text-slate-900 text-sm mb-1 group-hover:text-emerald-600 transition-colors">Help Desk</h4>
+            <p class="text-xs text-slate-500">24/7 dedicated support agent live messaging.</p>
+          </a>
+        </div>
+
+        <!-- Recent Orders List in Profile -->
+        <div class="bg-white rounded-3xl border border-slate-200 shadow-sm p-6">
+          <div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-4">
+            <h3 class="font-heading font-black text-base text-slate-900">Recent Order Activity</h3>
+            <a href="/track-order.bd" class="text-xs font-bold text-purple-600 hover:underline">Track All &rarr;</a>
+          </div>
+          <div id="profile-recent-orders-list">
+            <!-- Injected via JavaScript -->
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+
+  <!-- =========================================================================
        8. SLIDING SHOPPING CART DRAWER (Clean White Theme)
        ========================================================================= -->
   <div id="cart-drawer-backdrop"
@@ -656,7 +1083,7 @@
 
         <h3 class="font-heading font-black text-2xl text-slate-900 mb-2">Order Placed Successfully!</h3>
         <p class="text-slate-600 text-xs max-w-md mx-auto mb-6">
-          Thank you for choosing Motion View. Our representative will call you for verification.
+          Thank you for choosing JP Gadget Bazar. Our representative will call you for verification.
         </p>
 
         <div
@@ -681,58 +1108,53 @@
 
 
   <!-- =========================================================================
-       12. MOBILE BOTTOM NAVIGATION BAR
+       12. MOBILE BOTTOM NAVIGATION BAR (Home, Message, Cart, Profile - Mobile Only)
        ========================================================================= -->
   <div
-    class="mobile-bottom-bar fixed bottom-0 inset-x-0 z-40 bg-white border-t border-slate-200 px-6 py-2.5 items-center justify-between shadow-md">
-    <a href="#" class="flex flex-col items-center text-purple-600">
-      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    class="mobile-bottom-bar md:hidden fixed bottom-0 inset-x-0 z-40 bg-white/95 backdrop-blur-md border-t border-slate-200 px-4 py-2 flex items-center justify-around shadow-lg">
+    
+    <!-- 1. Home -->
+    <a href="/" data-nav="home" class="mobile-nav-item flex flex-col items-center justify-center flex-1 py-1 text-purple-600 hover:text-purple-700 transition-colors">
+      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
         <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
         <polyline points="9 22 9 12 15 12 15 22" />
       </svg>
-      <span class="text-[10px] font-semibold mt-0.5">Home</span>
+      <span class="text-[11px] font-black mt-1 leading-none text-purple-600">Home</span>
     </a>
 
-    <button class="flex flex-col items-center text-slate-500 hover:text-purple-600"
-      onclick="document.getElementById('store-showcase-section').scrollIntoView({behavior:'smooth'})">
-      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <rect x="3" y="3" width="7" height="7" />
-        <rect x="14" y="3" width="7" height="7" />
-        <rect x="14" y="14" width="7" height="7" />
-        <rect x="3" y="14" width="7" height="7" />
-      </svg>
-      <span class="text-[10px] font-semibold mt-0.5">3 Tabs</span>
-    </button>
+    <!-- 2. Message / Chat -->
+    <a href="/message" data-nav="message" id="mobile-nav-chat" class="mobile-nav-item flex flex-col items-center justify-center flex-1 py-1 text-slate-500 hover:text-purple-600 transition-colors relative cursor-pointer">
+      <div class="relative">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+        <span class="absolute -top-1 -right-1.5 w-3.5 h-3.5 rounded-full bg-rose-500 text-white text-[8px] font-black flex items-center justify-center ring-2 ring-white">1</span>
+      </div>
+      <span class="text-[11px] font-semibold mt-1 leading-none text-slate-600">Message</span>
+    </a>
 
-    <button class="btn-open-wishlist flex flex-col items-center text-slate-500 hover:text-purple-600 relative">
-      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path
-          d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
-      </svg>
-      <span
-        class="wishlist-badge-count absolute -top-1 right-2 w-4 h-4 rounded-full bg-purple-600 text-white font-bold text-[9px] flex items-center justify-center hidden">0</span>
-      <span class="text-[10px] font-semibold mt-0.5">Wishlist</span>
-    </button>
+    <!-- 3. Cart -->
+    <a href="/cart" data-nav="cart" id="mobile-nav-cart" class="mobile-nav-item btn-open-cart flex flex-col items-center justify-center flex-1 py-1 text-slate-500 hover:text-purple-600 transition-colors relative cursor-pointer">
+      <div class="relative">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="8" cy="21" r="1" />
+          <circle cx="19" cy="21" r="1" />
+          <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
+        </svg>
+        <span
+          class="cart-badge-count absolute -top-1.5 -right-2.5 w-4 h-4 rounded-full bg-purple-600 text-white font-bold text-[9px] flex items-center justify-center">0</span>
+      </div>
+      <span class="text-[11px] font-semibold mt-1 leading-none text-slate-600">Cart</span>
+    </a>
 
-    <button class="btn-trigger-track flex flex-col items-center text-slate-500 hover:text-purple-600">
+    <!-- 4. Profile / Account -->
+    <a href="/profile" data-nav="profile" id="mobile-nav-profile" class="mobile-nav-item flex flex-col items-center justify-center flex-1 py-1 text-slate-500 hover:text-purple-600 transition-colors cursor-pointer">
       <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M21 10V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l2-1.14"/>
-        <polyline points="3.29 7 12 12 20.71 7"/>
-        <circle cx="18" cy="18" r="3"/>
+        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+        <circle cx="12" cy="7" r="4"/>
       </svg>
-      <span class="text-[10px] font-semibold mt-0.5">Track</span>
-    </button>
-
-    <button class="btn-open-cart flex flex-col items-center text-slate-500 hover:text-purple-600 relative">
-      <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <circle cx="8" cy="21" r="1" />
-        <circle cx="19" cy="21" r="1" />
-        <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
-      </svg>
-      <span
-        class="cart-badge-count absolute -top-1 right-2 w-4 h-4 rounded-full bg-purple-600 text-white font-bold text-[9px] flex items-center justify-center">0</span>
-      <span class="text-[10px] font-semibold mt-0.5">Cart</span>
-    </button>
+      <span class="text-[11px] font-semibold mt-1 leading-none text-slate-600">Profile</span>
+    </a>
   </div>
 
 
@@ -743,8 +1165,8 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-8 border-b border-slate-200">
         <div class="space-y-3">
-          <span class="font-heading font-black text-lg text-slate-900">MOTION<span
-              class="text-purple-600">VIEW</span></span>
+          <span class="font-heading font-black text-lg text-slate-900">JP GADGET <span
+              class="text-purple-600">BAZAR</span></span>
           <p>The largest importer and distributor of authentic smart gadgets, smartwatches, true wireless audio, and AI
             products in Bangladesh.</p>
           <div class="font-bold text-slate-800">Hotline: 09677460460 (10 AM - 8 PM)</div>
@@ -780,7 +1202,7 @@
       </div>
 
       <div class="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-slate-400 text-[11px]">
-        <span>&copy; 2026 Motion View. All rights reserved.</span>
+        <span>&copy; 2026 JP Gadget Bazar. All rights reserved.</span>
         <span>100% Authentic Products with Official Warranty</span>
       </div>
     </div>
@@ -807,12 +1229,12 @@
       <div class="flex items-center gap-3">
         <div class="relative">
           <div class="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center font-bold text-sm">
-            MV
+            JP
           </div>
           <span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-purple-600"></span>
         </div>
         <div>
-          <h4 class="font-heading font-black text-sm leading-tight">Motion View Support</h4>
+          <h4 class="font-heading font-black text-sm leading-tight">JP Gadget Bazar Support</h4>
           <span class="text-[10px] text-purple-200 font-medium">Online & Ready to Help</span>
         </div>
       </div>
@@ -825,10 +1247,10 @@
     <div id="live-chat-messages" class="p-4 h-72 overflow-y-auto space-y-3 bg-slate-50/70 text-xs">
       <div class="flex items-start gap-2">
         <div class="w-7 h-7 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-[10px] font-bold flex-shrink-0">
-          MV
+          JP
         </div>
         <div class="bg-white border border-slate-200 p-3 rounded-2xl rounded-tl-xs shadow-2xs max-w-[80%] text-slate-800">
-          <p class="font-medium">আসসালামু আলাইকুম! Motion View-এ আপনাকে স্বাগতম। আপনার অর্ডার বা কোনো গ্যাজেট সম্পর্কে জানতে এখানে মেসেজ দিন।</p>
+          <p class="font-medium">আসসালামু আলাইকুম! JP Gadget Bazar-এ আপনাকে স্বাগতম। আপনার অর্ডার বা কোনো গ্যাজেট সম্পর্কে জানতে এখানে মেসেজ দিন।</p>
           <span class="text-[9px] text-slate-400 block mt-1">Just now</span>
         </div>
       </div>
@@ -884,12 +1306,142 @@
     </div>
   </div>
 
+  <!-- =========================================================================
+       16. SLIDING USER PROFILE DRAWER (ডান দিক থেকে স্লাইড হওয়া প্রোফাইল ড্রয়ার)
+       ========================================================================= -->
+  <div id="profile-drawer-backdrop" class="drawer-backdrop fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex justify-end">
+    <div class="drawer-panel w-full max-w-md bg-white border-l border-slate-200 h-full flex flex-col justify-between shadow-2xl p-6 overflow-y-auto">
+      <div>
+        <!-- Drawer Header -->
+        <div class="flex items-center justify-between pb-4 border-b border-slate-200 mb-5">
+          <div class="flex items-center gap-3">
+            <div id="drawer-user-avatar" class="w-10 h-10 rounded-full bg-gradient-to-tr from-purple-600 to-indigo-600 text-white font-black text-sm flex items-center justify-center shadow-md shadow-purple-600/20">
+              JP
+            </div>
+            <div>
+              <h3 id="drawer-user-name" class="font-heading font-black text-base text-slate-900 leading-tight">My Profile</h3>
+              <p id="drawer-user-status" class="text-[11px] text-emerald-600 font-semibold">Active Member</p>
+            </div>
+          </div>
+          <button id="btn-close-profile-drawer" class="btn-close-profile-drawer w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 flex items-center justify-center text-lg font-bold transition-colors cursor-pointer">&times;</button>
+        </div>
+
+        <!-- User Quick Card / Welcome -->
+        <div class="bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-100 rounded-2xl p-4 mb-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-[10px] font-bold text-purple-700 uppercase tracking-wider block">Customer Account</span>
+              <span id="drawer-user-phone-display" class="font-bold text-xs text-slate-800">017XXXXXXXX</span>
+            </div>
+            <a href="/profile" id="drawer-view-full-page" class="text-xs font-bold text-purple-600 hover:text-purple-700 hover:underline">Full Page &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Profile Actions List (Navigation items) -->
+        <div class="space-y-1 text-xs">
+          <!-- 1. Cart -->
+          <button id="profile-drawer-action-cart" class="w-full flex items-center justify-between p-3 rounded-xl hover:bg-slate-50 text-slate-700 font-semibold transition-colors cursor-pointer text-left">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+              </div>
+              <div>
+                <span class="block">My Shopping Cart</span>
+                <span class="text-[10px] text-slate-400">View items in your bag</span>
+              </div>
+            </div>
+            <svg class="w-4 h-4 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+
+          <!-- 2. Message / Live Chat -->
+          <button id="profile-drawer-action-support" class="w-full flex items-center justify-between p-3 rounded-xl hover:bg-slate-50 text-slate-700 font-semibold transition-colors cursor-pointer text-left">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+              </div>
+              <div>
+                <span class="block">Message & Live Help Desk</span>
+                <span class="text-[10px] text-emerald-600">Online 24/7 Agent</span>
+              </div>
+            </div>
+            <svg class="w-4 h-4 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+
+          <!-- 3. Track My Order -->
+          <button id="profile-drawer-action-track" class="w-full flex items-center justify-between p-3 rounded-xl hover:bg-slate-50 text-slate-700 font-semibold transition-colors cursor-pointer text-left">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l2-1.14"/><circle cx="18" cy="18" r="3"/><polyline points="18 17 18 19 20 19"/></svg>
+              </div>
+              <div>
+                <span class="block">Track My Order</span>
+                <span class="text-[10px] text-slate-400">Live courier & delivery status</span>
+              </div>
+            </div>
+            <svg class="w-4 h-4 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+
+          <!-- 4. Wishlist -->
+          <button id="profile-drawer-action-wishlist" class="w-full flex items-center justify-between p-3 rounded-xl hover:bg-slate-50 text-slate-700 font-semibold transition-colors cursor-pointer text-left">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-lg bg-rose-50 text-rose-500 flex items-center justify-center">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+              </div>
+              <div>
+                <span class="block">My Wishlist</span>
+                <span class="text-[10px] text-slate-400">Saved favorite gadgets</span>
+              </div>
+            </div>
+            <svg class="w-4 h-4 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+
+          <!-- 5. Switch / Logout -->
+          <button id="profile-drawer-logout-btn" class="w-full flex items-center justify-between p-3 rounded-xl hover:bg-rose-50 text-rose-600 font-semibold transition-colors cursor-pointer text-left">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-lg bg-rose-100/60 text-rose-600 flex items-center justify-center">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+              </div>
+              <div>
+                <span class="block">Switch Account / Logout</span>
+                <span class="text-[10px] text-slate-400">Sign in with different number</span>
+              </div>
+            </div>
+            <svg class="w-4 h-4 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Drawer Bottom Hotline & Admin -->
+      <div class="pt-4 border-t border-slate-200 space-y-2 mt-4 text-xs">
+        <a href="tel:09677460460" class="flex items-center justify-between p-2.5 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 transition-colors">
+          <div class="flex items-center gap-2.5">
+            <div class="w-7 h-7 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center">
+              <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <span class="block font-bold">Hotline Support</span>
+              <span class="text-[10px] text-purple-600 font-bold">09677460460</span>
+            </div>
+          </div>
+          <span class="text-[10px] text-slate-400 font-bold">10 AM - 8 PM</span>
+        </a>
+
+        <div class="text-center pt-1">
+          <a href="/admin.html" class="inline-flex items-center gap-1 text-[11px] text-purple-600 font-bold hover:underline">
+            <span>Admin Control Panel</span>
+            <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Floating Toast Container -->
   <div id="toast-container"></div>
 
   <script src="/js/data.js?v=4.0"></script>
   <script src="/js/store.js?v=4.0"></script>
-  <script src="/js/app.js?v=4.0"></script>
+  <script src="/js/app.js?v=5.1"></script>
 </body>
 
 </html>

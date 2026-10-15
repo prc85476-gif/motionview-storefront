@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const storeHomeView = document.getElementById('store-home-view');
   const productDetailView = document.getElementById('product-detail-view');
   const orderTrackPageView = document.getElementById('order-track-page-view');
+  const userAuthProfileView = document.getElementById('user-auth-profile-view');
 
   // Element Selectors
   const productGrid = document.getElementById('product-grid');
@@ -23,6 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Drawers & Modals
   const cartDrawerBackdrop = document.getElementById('cart-drawer-backdrop');
+  const profileDrawerBackdrop = document.getElementById('profile-drawer-backdrop');
   const cartItemsContainer = document.getElementById('cart-items-container');
   const cartEmptyState = document.getElementById('cart-empty-state');
   const cartSubtotalEl = document.getElementById('cart-subtotal');
@@ -85,6 +87,30 @@ document.addEventListener('DOMContentLoaded', () => {
     // Check if route is Order Tracking page
     if (cleanPath === 'track-order.bd' || cleanPath === 'track-order' || cleanPath === 'track') {
       showOrderTrackPageView();
+      updateMobileNavActive('home');
+      return;
+    }
+
+    // Check if route is /message or /messages or /massase or /chat
+    if (cleanPath === 'message' || cleanPath === 'massase' || cleanPath === 'messages' || cleanPath === 'chat') {
+      showStoreView();
+      updateMobileNavActive('message');
+      openMessageDesk();
+      return;
+    }
+
+    // Check if route is /cart
+    if (cleanPath === 'cart') {
+      showStoreView();
+      updateMobileNavActive('cart');
+      openCartDrawer();
+      return;
+    }
+
+    // Check if route is /profile or /account
+    if (cleanPath === 'profile' || cleanPath === 'account') {
+      showProfilePageView();
+      updateMobileNavActive('profile');
       return;
     }
 
@@ -98,6 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (cleanPath.startsWith('category/')) {
       const cat = cleanPath.replace('category/', '');
       showStoreView(cat);
+      updateMobileNavActive('home');
       return;
     } else if (cleanPath && cleanPath !== 'index.html' && cleanPath !== 'store') {
       // Check if direct slug matches a product (e.g. /canbaproduct156NBDHJ4)
@@ -117,6 +144,69 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Default: Show Storefront Home View
     showStoreView();
+    updateMobileNavActive('home');
+  }
+
+  function updateMobileNavActive(activeTab) {
+    document.querySelectorAll('.mobile-nav-item').forEach(el => {
+      const isTarget = el.dataset.nav === activeTab;
+      el.classList.toggle('text-purple-600', isTarget);
+      el.classList.toggle('text-slate-500', !isTarget);
+      const label = el.querySelector('span');
+      if (label) {
+        label.classList.toggle('font-black', isTarget);
+        label.classList.toggle('text-purple-600', isTarget);
+        label.classList.toggle('text-slate-600', !isTarget);
+      }
+    });
+  }
+
+  function openMessageDesk() {
+    const chatBox = document.getElementById('live-chat-box');
+    const chatInput = document.getElementById('live-chat-input');
+    if (chatBox) {
+      chatBox.classList.remove('hidden');
+      chatBox.classList.add('flex');
+      setTimeout(() => chatInput?.focus(), 150);
+    }
+  }
+
+  function openCartDrawer() {
+    if (cartDrawerBackdrop) {
+      cartDrawerBackdrop.classList.add('open');
+    }
+  }
+
+  function openProfileDrawer() {
+    if (profileDrawerBackdrop) {
+      updateProfileUI();
+      profileDrawerBackdrop.classList.add('open');
+    }
+  }
+
+  function closeProfileDrawer() {
+    if (profileDrawerBackdrop) {
+      profileDrawerBackdrop.classList.remove('open');
+    }
+  }
+
+  function showProfilePageView() {
+    closeProfileDrawer();
+    if (storeHomeView) storeHomeView.classList.add('hidden');
+    if (productDetailView) productDetailView.classList.add('hidden');
+    if (orderTrackPageView) {
+      orderTrackPageView.classList.add('hidden');
+      orderTrackPageView.classList.remove('flex');
+    }
+    if (userAuthProfileView) {
+      userAuthProfileView.classList.remove('hidden');
+    }
+
+    const mobileBottomBar = document.querySelector('.mobile-bottom-bar');
+    if (mobileBottomBar) mobileBottomBar.classList.remove('hidden');
+
+    updateProfileUI();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   function showStoreView(category = null) {
@@ -125,6 +215,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (orderTrackPageView) {
       orderTrackPageView.classList.add('hidden');
       orderTrackPageView.classList.remove('flex');
+    }
+    if (userAuthProfileView) {
+      userAuthProfileView.classList.add('hidden');
     }
 
     const mobileBottomBar = document.querySelector('.mobile-bottom-bar');
@@ -147,6 +240,9 @@ document.addEventListener('DOMContentLoaded', () => {
       orderTrackPageView.classList.add('hidden');
       orderTrackPageView.classList.remove('flex');
     }
+    if (userAuthProfileView) {
+      userAuthProfileView.classList.add('hidden');
+    }
 
     const mobileBottomBar = document.querySelector('.mobile-bottom-bar');
     if (mobileBottomBar) mobileBottomBar.classList.add('hidden');
@@ -161,6 +257,9 @@ document.addEventListener('DOMContentLoaded', () => {
   function showOrderTrackPageView() {
     if (storeHomeView) storeHomeView.classList.add('hidden');
     if (productDetailView) productDetailView.classList.add('hidden');
+    if (userAuthProfileView) {
+      userAuthProfileView.classList.add('hidden');
+    }
 
     if (orderTrackPageView) {
       orderTrackPageView.classList.remove('hidden');
@@ -267,11 +366,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
               <!-- Zoom Lens Indicator -->
               <div id="pdp-zoom-lens" class="pdp-zoom-lens"></div>
+            </div>
 
-              <!-- Floating Zoom Window on Right Side -->
-              <div id="pdp-zoom-window" class="pdp-zoom-window">
-                <img id="pdp-zoom-target-img" src="${allGalleryImages[0]}" alt="${product.name}" />
-              </div>
+            <!-- Floating Zoom Window on Right Side (Outside overflow:hidden frame) -->
+            <div id="pdp-zoom-window" class="pdp-zoom-window">
+              <img id="pdp-zoom-target-img" src="${allGalleryImages[0]}" alt="${product.name}" />
             </div>
 
             <!-- 2-3 Thumbnails Strip under Main Image -->
@@ -525,7 +624,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <tbody>
                 <tr>
                   <td>Brand</td>
-                  <td>${product.brand || 'Motion View'}</td>
+                  <td>${product.brand || 'JP Gadget Bazar'}</td>
                 </tr>
                 <tr>
                   <td>Category</td>
@@ -1042,33 +1141,22 @@ document.addEventListener('DOMContentLoaded', () => {
     if (pdpMainFrame && pdpActiveImg && pdpZoomLens && pdpZoomWindow && pdpZoomTargetImg) {
       let isZoomActive = false;
 
-      function onMouseEnter() {
-        if (window.innerWidth < 1024) return; // Only show on desktop screens
-        isZoomActive = true;
-        pdpZoomLens.style.display = 'block';
-        pdpZoomWindow.style.display = 'block';
-
-        // Size zoomed target 2.5x of active image
+      function updateZoom(e) {
+        if (window.innerWidth < 1024) return;
         const frameRect = pdpMainFrame.getBoundingClientRect();
-        pdpZoomTargetImg.style.width = (frameRect.width * 2.5) + 'px';
-        pdpZoomTargetImg.style.height = (frameRect.height * 2.5) + 'px';
-      }
+        if (frameRect.width === 0 || frameRect.height === 0) return;
 
-      function onMouseLeave() {
-        isZoomActive = false;
-        pdpZoomLens.style.display = 'none';
-        pdpZoomWindow.style.display = 'none';
-      }
+        // Ensure target image is scaled properly
+        const zoomFactor = 2.5;
+        pdpZoomTargetImg.style.width = (frameRect.width * zoomFactor) + 'px';
+        pdpZoomTargetImg.style.height = (frameRect.height * zoomFactor) + 'px';
 
-      function onMouseMove(e) {
-        if (!isZoomActive || window.innerWidth < 1024) return;
-        const frameRect = pdpMainFrame.getBoundingClientRect();
         let x = e.clientX - frameRect.left;
         let y = e.clientY - frameRect.top;
 
         // Lens positioning
-        const lensW = pdpZoomLens.offsetWidth || 120;
-        const lensH = pdpZoomLens.offsetHeight || 120;
+        const lensW = pdpZoomLens.offsetWidth || 130;
+        const lensH = pdpZoomLens.offsetHeight || 130;
 
         let lensX = x - (lensW / 2);
         let lensY = y - (lensH / 2);
@@ -1083,11 +1171,33 @@ document.addEventListener('DOMContentLoaded', () => {
         pdpZoomLens.style.top = lensY + 'px';
 
         // Ratio of movement for the magnified right view
-        const cx = pdpZoomTargetImg.offsetWidth / frameRect.width;
-        const cy = pdpZoomTargetImg.offsetHeight / frameRect.height;
+        const cx = (frameRect.width * zoomFactor) / frameRect.width;
+        const cy = (frameRect.height * zoomFactor) / frameRect.height;
 
         pdpZoomTargetImg.style.left = '-' + (lensX * cx) + 'px';
         pdpZoomTargetImg.style.top = '-' + (lensY * cy) + 'px';
+      }
+
+      function onMouseEnter(e) {
+        if (window.innerWidth < 1024) return; // Only show on desktop screens
+        isZoomActive = true;
+        pdpZoomLens.style.display = 'block';
+        pdpZoomWindow.style.display = 'block';
+        updateZoom(e);
+      }
+
+      function onMouseLeave() {
+        isZoomActive = false;
+        pdpZoomLens.style.display = 'none';
+        pdpZoomWindow.style.display = 'none';
+      }
+
+      function onMouseMove(e) {
+        if (!isZoomActive) {
+          onMouseEnter(e);
+          return;
+        }
+        updateZoom(e);
       }
 
       pdpMainFrame.addEventListener('mouseenter', onMouseEnter);
@@ -1729,8 +1839,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Cart Drawer
     document.querySelectorAll('.btn-open-cart').forEach(b => {
-      b.addEventListener('click', () => {
-        if (cartDrawerBackdrop) cartDrawerBackdrop.classList.add('open');
+      b.addEventListener('click', (e) => {
+        if (b.tagName === 'A' || b.closest('.mobile-nav-item')) {
+          e.preventDefault();
+          navigateTo('/cart');
+        } else {
+          if (cartDrawerBackdrop) cartDrawerBackdrop.classList.add('open');
+        }
+      });
+    });
+
+    // Mobile Bottom Nav General SPA interceptor
+    document.querySelectorAll('.mobile-nav-item').forEach(link => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
+        if (href && href.startsWith('/')) {
+          e.preventDefault();
+          navigateTo(href);
+        }
       });
     });
 
@@ -2008,7 +2134,7 @@ document.addEventListener('DOMContentLoaded', () => {
           repEl.className = 'flex items-start gap-2';
           repEl.innerHTML = `
             <div class="w-7 h-7 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center text-[10px] font-bold flex-shrink-0">
-              MV
+              JP
             </div>
             <div class="bg-white border border-slate-200 p-3 rounded-2xl rounded-tl-xs shadow-2xs max-w-[80%] text-slate-800">
               <p class="font-medium">ধন্যবাদ আপনার বার্তার জন্য! আমাদের সাপোর্ট টিম এই মুহূর্তে একটিভ রয়েছে। একজন এজেন্ট এখনই উত্তর দিচ্ছেন।</p>
@@ -2020,11 +2146,321 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 800);
       });
     }
+
+    // Connect mobile bottom bar "Message" button to open Live Chat Box & navigate cleanly
+    const mobileChatBtn = document.getElementById('mobile-nav-chat');
+    if (mobileChatBtn) {
+      mobileChatBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        navigateTo('/message');
+      });
+    }
+  }
+
+  // =========================================================================
+  // USER AUTH & PROFILE CONTROLLER
+  // =========================================================================
+  function getLoggedInUser() {
+    try {
+      const stored = localStorage.getItem('jpgadget_auth_user');
+      if (stored) return JSON.parse(stored);
+    } catch (e) {}
+    return null;
+  }
+
+  function setLoggedInUser(user) {
+    if (user) {
+      localStorage.setItem('jpgadget_auth_user', JSON.stringify(user));
+    } else {
+      localStorage.removeItem('jpgadget_auth_user');
+    }
+    updateProfileUI();
+  }
+
+  function updateProfileUI() {
+    const user = getLoggedInUser();
+    const guestSec = document.getElementById('auth-guest-section');
+    const loggedSec = document.getElementById('auth-logged-in-section');
+    const headerProfileBtn = document.getElementById('desktop-header-profile-btn');
+
+    // Drawer Elements
+    const drawerAvatar = document.getElementById('drawer-user-avatar');
+    const drawerName = document.getElementById('drawer-user-name');
+    const drawerPhone = document.getElementById('drawer-user-phone-display');
+    const drawerStatus = document.getElementById('drawer-user-status');
+
+    // Page Elements
+    const pageAvatar = document.getElementById('profile-page-avatar');
+    const pageName = document.getElementById('profile-page-name');
+    const pagePhone = document.getElementById('profile-page-phone');
+    const recentOrdersContainer = document.getElementById('profile-recent-orders-list');
+
+    if (user) {
+      const initials = (user.name || 'JP').trim().split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() || 'JP';
+      
+      // Update header button
+      if (headerProfileBtn) {
+        const textSpan = headerProfileBtn.querySelector('span');
+        if (textSpan) textSpan.textContent = user.name ? user.name.split(' ')[0] : 'Profile';
+      }
+
+      // Update drawer
+      if (drawerAvatar) drawerAvatar.textContent = initials;
+      if (drawerName) drawerName.textContent = user.name || 'Member';
+      if (drawerPhone) drawerPhone.textContent = user.phone || '017XXXXXXXX';
+      if (drawerStatus) drawerStatus.textContent = 'Active Member';
+
+      // Update page view
+      if (guestSec) guestSec.classList.add('hidden');
+      if (loggedSec) loggedSec.classList.remove('hidden');
+      if (pageAvatar) pageAvatar.textContent = initials;
+      if (pageName) pageName.textContent = user.name || 'Member';
+      if (pagePhone) pagePhone.textContent = user.phone || '017XXXXXXXX';
+
+      // Update mobile Daraz view
+      const mobileDarazAvatar = document.getElementById('mobile-daraz-avatar');
+      const mobileDarazUsername = document.getElementById('mobile-daraz-username');
+      if (mobileDarazAvatar) mobileDarazAvatar.textContent = initials;
+      if (mobileDarazUsername) mobileDarazUsername.textContent = user.name ? user.name.toLowerCase().replace(/\s+/g, '') : 'chillshop51';
+
+      // Populate recent orders
+      if (recentOrdersContainer) {
+        let orders = [];
+        try {
+          orders = JSON.parse(localStorage.getItem('motionview_live_order_requests') || '[]');
+        } catch (e) {}
+        
+        if (orders.length > 0) {
+          recentOrdersContainer.innerHTML = `
+            <div class="divide-y divide-slate-100">
+              ${orders.slice(0, 5).map(o => `
+                <div class="py-3 flex items-center justify-between gap-3 text-xs">
+                  <div>
+                    <span class="font-mono font-bold text-purple-600 block">${o.id}</span>
+                    <span class="text-slate-800 font-semibold">${o.productName || 'Order Items'}</span>
+                  </div>
+                  <div class="text-right">
+                    <span class="font-bold text-slate-900 block">৳${o.totalAmount || '0'}</span>
+                    <span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-bold ${o.status === 'Confirmed' ? 'bg-emerald-100 text-emerald-700' : 'bg-blue-100 text-blue-700'}">${o.status || 'Processing'}</span>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          `;
+        } else {
+          recentOrdersContainer.innerHTML = `
+            <div class="text-center py-6 text-slate-400 text-xs">
+              <p>আপনার কোনো সাম্প্রতিক অর্ডার নেই।</p>
+            </div>
+          `;
+        }
+      }
+    } else {
+      // Logged out
+      if (headerProfileBtn) {
+        const textSpan = headerProfileBtn.querySelector('span');
+        if (textSpan) textSpan.textContent = 'Profile';
+      }
+
+      if (drawerAvatar) drawerAvatar.textContent = 'JP';
+      if (drawerName) drawerName.textContent = 'Guest Visitor';
+      if (drawerPhone) drawerPhone.textContent = 'Please log in';
+      if (drawerStatus) drawerStatus.textContent = 'Not Logged In';
+
+      if (guestSec) guestSec.classList.remove('hidden');
+      if (loggedSec) loggedSec.classList.add('hidden');
+    }
+  }
+
+  function initProfileAndAuth() {
+    const mobileProfileBtn = document.getElementById('mobile-nav-profile');
+    const desktopProfileBtn = document.getElementById('desktop-header-profile-btn');
+    const closeDrawerBtn = document.getElementById('btn-close-profile-drawer');
+    const drawerCartBtn = document.getElementById('profile-drawer-action-cart');
+    const drawerSupportBtn = document.getElementById('profile-drawer-action-support');
+    const drawerTrackBtn = document.getElementById('profile-drawer-action-track');
+    const drawerWishlistBtn = document.getElementById('profile-drawer-action-wishlist');
+    const drawerLogoutBtn = document.getElementById('profile-drawer-logout-btn');
+    const pageLogoutBtn = document.getElementById('btn-page-logout');
+
+    // Clicking Profile button in mobile or desktop:
+    // If user is already logged in, slide open the profile drawer (same as cart drawer)!
+    // If user is NOT logged in, navigate directly to /profile page to show login / register options!
+    function handleProfileTrigger(e) {
+      if (e) e.preventDefault();
+      const user = getLoggedInUser();
+      if (user) {
+        openProfileDrawer();
+      } else {
+        navigateTo('/profile');
+      }
+    }
+
+    if (mobileProfileBtn) {
+      mobileProfileBtn.addEventListener('click', handleProfileTrigger);
+    }
+    if (desktopProfileBtn) {
+      desktopProfileBtn.addEventListener('click', handleProfileTrigger);
+    }
+
+    // Close profile drawer
+    if (closeDrawerBtn) {
+      closeDrawerBtn.addEventListener('click', closeProfileDrawer);
+    }
+    if (profileDrawerBackdrop) {
+      profileDrawerBackdrop.addEventListener('click', (e) => {
+        if (e.target === profileDrawerBackdrop) closeProfileDrawer();
+      });
+    }
+
+    // Drawer action items
+    if (drawerCartBtn) {
+      drawerCartBtn.addEventListener('click', () => {
+        closeProfileDrawer();
+        openCartDrawer();
+      });
+    }
+    if (drawerSupportBtn) {
+      drawerSupportBtn.addEventListener('click', () => {
+        closeProfileDrawer();
+        navigateTo('/message');
+      });
+    }
+    if (drawerTrackBtn) {
+      drawerTrackBtn.addEventListener('click', () => {
+        closeProfileDrawer();
+        navigateTo('/track-order.bd');
+      });
+    }
+    if (drawerWishlistBtn) {
+      drawerWishlistBtn.addEventListener('click', () => {
+        closeProfileDrawer();
+        if (wishlistDrawerBackdrop) wishlistDrawerBackdrop.classList.add('open');
+      });
+    }
+
+    // Logout handlers
+    function handleLogout() {
+      setLoggedInUser(null);
+      closeProfileDrawer();
+      showToast('লগআউট সফল হয়েছে', 'info');
+      navigateTo('/profile');
+    }
+
+    if (drawerLogoutBtn) drawerLogoutBtn.addEventListener('click', handleLogout);
+    if (pageLogoutBtn) pageLogoutBtn.addEventListener('click', handleLogout);
+
+    const mobileDarazLogoutBtn = document.getElementById('btn-mobile-daraz-logout');
+    if (mobileDarazLogoutBtn) mobileDarazLogoutBtn.addEventListener('click', handleLogout);
+
+    const mobileDarazSettingsBtn = document.getElementById('mobile-daraz-settings-btn');
+    if (mobileDarazSettingsBtn) {
+      mobileDarazSettingsBtn.addEventListener('click', () => {
+        if (confirm('আপনি কি অ্যাকাউন্ট সেটিংস দেখতে চান নাকি লগআউট করতে চান?\n\nলগআউট করতে OK চাপুন, অন্যথায় Cancel চাপুন।')) {
+          handleLogout();
+        }
+      });
+    }
+
+    // Auth Tabs (Login vs Register)
+    const tabLogin = document.getElementById('auth-tab-login');
+    const tabRegister = document.getElementById('auth-tab-register');
+    const formLogin = document.getElementById('form-user-login');
+    const formRegister = document.getElementById('form-user-register');
+
+    if (tabLogin && tabRegister && formLogin && formRegister) {
+      tabLogin.addEventListener('click', () => {
+        tabLogin.className = 'flex-1 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all shadow-xs bg-white text-purple-700 cursor-pointer';
+        tabRegister.className = 'flex-1 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-slate-600 hover:text-slate-900 transition-all cursor-pointer';
+        formLogin.classList.remove('hidden');
+        formRegister.classList.add('hidden');
+      });
+
+      tabRegister.addEventListener('click', () => {
+        tabRegister.className = 'flex-1 py-2.5 rounded-xl font-bold text-xs sm:text-sm transition-all shadow-xs bg-white text-purple-700 cursor-pointer';
+        tabLogin.className = 'flex-1 py-2.5 rounded-xl font-semibold text-xs sm:text-sm text-slate-600 hover:text-slate-900 transition-all cursor-pointer';
+        formRegister.classList.remove('hidden');
+        formLogin.classList.add('hidden');
+      });
+    }
+
+    // Form Login Submit
+    if (formLogin) {
+      formLogin.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const phone = document.getElementById('login-phone')?.value.trim();
+        const pwd = document.getElementById('login-password')?.value.trim();
+        if (!phone || !pwd) return;
+
+        // Auto find existing name or default
+        let registeredUsers = [];
+        try {
+          registeredUsers = JSON.parse(localStorage.getItem('jpgadget_registered_users') || '[]');
+        } catch (e) {}
+
+        const matched = registeredUsers.find(u => u.phone === phone);
+        const userName = matched ? matched.name : (phone === '01711223344' ? 'Tanvir Ahmed' : 'Customer #' + phone.slice(-4));
+
+        setLoggedInUser({
+          phone,
+          name: userName,
+          loggedInAt: new Date().toISOString()
+        });
+
+        showToast(`স্বাগতম, ${userName}! লগইন সফল হয়েছে`, 'success');
+        openProfileDrawer();
+      });
+    }
+
+    // Form Register Submit
+    if (formRegister) {
+      formRegister.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('reg-name')?.value.trim();
+        const phone = document.getElementById('reg-phone')?.value.trim();
+        const pwd = document.getElementById('reg-password')?.value.trim();
+        if (!name || !phone || !pwd) return;
+
+        let registeredUsers = [];
+        try {
+          registeredUsers = JSON.parse(localStorage.getItem('jpgadget_registered_users') || '[]');
+        } catch (e) {}
+
+        registeredUsers.push({ name, phone, pwd, createdAt: new Date().toISOString() });
+        localStorage.setItem('jpgadget_registered_users', JSON.stringify(registeredUsers));
+
+        setLoggedInUser({
+          phone,
+          name,
+          loggedInAt: new Date().toISOString()
+        });
+
+        showToast(`অভিনন্দন ${name}! একাউন্ট তৈরি সফল হয়েছে`, 'success');
+        openProfileDrawer();
+      });
+    }
+
+    // Quick One-Click Demo Login
+    const btnDemoLogin = document.getElementById('btn-quick-demo-login');
+    if (btnDemoLogin) {
+      btnDemoLogin.addEventListener('click', () => {
+        setLoggedInUser({
+          phone: '01711223344',
+          name: 'Tanvir Ahmed',
+          loggedInAt: new Date().toISOString()
+        });
+        showToast('ডেমো একাউন্টে লগইন সফল হয়েছে!', 'success');
+        openProfileDrawer();
+      });
+    }
+
+    updateProfileUI();
   }
 
   function init() {
     syncAdminCustomizations();
     initLiveChatWidget();
+    initProfileAndAuth();
     updateCartUI();
     updateWishlistUI();
     initEventListeners();
